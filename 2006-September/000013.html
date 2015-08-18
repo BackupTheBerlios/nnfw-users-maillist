@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Consiglio su un cambio di nome...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Consiglio%20su%20un%20cambio%20di%20nome...&In-Reply-To=%3C45100CC7.3070809%40unisi.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Consiglio su un cambio di nome...</H1>
+    <B>Marco Mirolli</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Consiglio%20su%20un%20cambio%20di%20nome...&In-Reply-To=%3C45100CC7.3070809%40unisi.it%3E"
+       TITLE="[Nnfw-users] Consiglio su un cambio di nome...">mirolli2 at unisi.it
+       </A><BR>
+    <I>Tue Sep 19 17:29:11 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Anche a me ActivationFunction sembrava la soluzione migliore ma...
+guardate questo interessante articolo:
+W. Duch and N. Jankowski (1999) Survey of neural transfer functions. 
+Neural Computing Surveys, (2):163--212 
+<A HREF="http://citeseer.ist.psu.edu/duch99survey.html">http://citeseer.ist.psu.edu/duch99survey.html</A>
+
+L'articolo fa una tassonomia piuttosto esaustiva di funzioni per reti 
+neurali usando i seguenti nomi:
+
+activation functions = funzioni che generano il netInput
+
+output functions = funzioni che, dato il netInput, generano 
+l'attivazione del neurone
+
+transfer functions = combinazioni di activation functions e output functions
+
+Dunque, quelle che Duch e Jankowski chiamano activation functions nel 
+NNFW equivalgono, grosso modo, alle implementazioni della funzione 
+update() dei linker, mentre i nostro attuali ClusterUpdater loro li 
+chiamano output functions.
+Visto che in effetti gli attuali ClusterUpdaters determinano l'output di 
+un cluster (dato l'input), forse il nome OutputFunction (in conformit&#224; 
+con l'articolo citato) &#232; il migliore.
+
+L'articolo citato suggerisce anche che in futuro si potrebbe creare una 
+gerarchia per le funzioni che generano il netInput, usate dai Linker, 
+analoga all'attuale gerarchia di ClusterUpdater per i Cluster.
+
+Meditate...
+e buon lavoro.
+Ciao,
+Marco
+
+Gianluca wrote:
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> attualmente la funzione di attivazione dei neuroni &#232; implementata
+</I>&gt;<i> attraverso una gerarchia di classe la cui radice &#232; *ClusterUpdater*
+</I>&gt;<i> Penso che il nome non &#232; molto adatto perch&#233; non aggiorna (Updater) il
+</I>&gt;<i> Cluster... ma &#232; semplicemente una funzione che si applica ad un vettore
+</I>&gt;<i> di reali, quindi ho pensato ad altri nomi... quale pensate sia il pi&#249;
+</I>&gt;<i> adatto fra questi ???
+</I>&gt;<i>  a) VectorialFunction
+</I>&gt;<i>  b) ActivationFunction
+</I>&gt;<i>  c) NFunction
+</I>&gt;<i>  d) VecFunction
+</I>&gt;<i> 
+</I>&gt;<i> Ciao,
+</I>&gt;<i> Gianluca
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

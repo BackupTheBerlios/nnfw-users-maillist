@@ -1,0 +1,214 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Thinking about Learning Paradigms...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Thinking%20about%20Learning%20Paradigms...&In-Reply-To=%3C45759A9D.90605%40unisi.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000064.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Thinking about Learning Paradigms...</H1>
+    <B>Marco Mirolli</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Thinking%20about%20Learning%20Paradigms...&In-Reply-To=%3C45759A9D.90605%40unisi.it%3E"
+       TITLE="[Nnfw-users] Thinking about Learning Paradigms...">mirolli2 at unisi.it
+       </A><BR>
+    <I>Tue Dec  5 17:13:17 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000064.html">[Nnfw-users] Thinking about Learning Paradigms...
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Gianluca,
+
+you propose a way of implementing learning algorithms which is quite 
+different to the one that we had previously discussed and partially 
+implemented but you don't say much about why the previously decided one 
+would not be right.
+By the way, the tone of my mail might seem prrovocative, as usual, but I 
+am just trying to help, and it's needless to say that I very much 
+appreciate what you have been doing (and still do) for the development 
+of the NNFW.
+
+So, I will discuss your proposal, expecially with respect to the 
+previous decisions, in two steps: (1) the modification of the learning 
+rules classes; (2) how to use these for constructing learning algorithms.
+
+(1) Learning rules
+You only say that the categorization I did for the learning rules &quot;maybe 
+not useful for the NNFW point of view&quot;, without qualifying this statement.
+I do think that it is indeed useful to see all rules as having the same 
+basic structure if they do (as you admit)! For example, you criticize 
+the current implamantation on the ground that the 'meanings' of the 
+variables in the Hebb and delta-rules are different, and the second one 
+requires a third 'external' variable. But with this implamentation you 
+don't need to use the BasicMatrixModifier for implementing the delta 
+rule. If you don't want (as it is reasonable) to pass to the modifier 
+the error (which is different from the post-synaptic activation) you can 
+just construct a DeltaMatrixModifier which inherit from the 
+BasicMatrixModifier and has the third (now internal) variable, that is 
+the teaching input, and reimplement the modify() method by subtracting 
+the postsynaptic activity to the teaching input before multiplying for 
+the presynaptic activity and the learning rate.
+This is not only efficient and easy to do, but represents exactly the 
+'meanings' and the roles of the rules' parameters!!!
+Just to do another example, about the SimulatedAnnealingRule. In the 
+current framework, I would implement it in the following way:
+name: RandomMatrixModifier!!!. It inherits from the MatrixModifier just 
+by adding just two parameters: the probability of mutation and the range 
+of new values. The implementation of the modify() method is 
+straightforward. Hence, it is not an abstract class.
+Of course, if someone wants to implement something more complicated, 
+s/he can create a new class inheriting from this one.
+
+Your proposal of the slight modification of the learning classes suffers 
+from a radical (unconscious) modification of the philosophy underlying 
+them. In fact, just by the names you give to your proposed classes it is 
+clear that you are confusing learning rules and learning algorithms!!! 
+Simulated Annealing is an algorithm, not a rule.
+And this brings me to the second point.
+
+(2) Learning Algorithms
+Your proposal looks to me too much like the first implementation of the 
+backprop algorithm, which we decided to abandon for its problems.
+You propose to reintroduce the hierarchy of LearningBlocks which would 
+parallel the hierarchy of Updatable (Clusters and Linkers).
+But the idea of introducing the Modifiers was just to avoid this 
+duplication of hierarchies. In this new framework, in order to construct 
+big classes that implement whole learning procedures (which we decided 
+to call LearningAlgorithms) you just need to use the Modifiers. These 
+are directly attached to the free parameters which they have to modify. 
+In this way, you don't need to construct complex classes for binding 
+free parameters with rules' inputs. And there is no need for any 
+templatization due to the high-variability in rule's interface. Basic 
+LearningAlgorithms should just call in the appropriate order the 
+Modifiers. What about more complex LearningAlgorithms? For example, the 
+backprop algorithm would just need another (set of) class(es): something 
+like ErrorBackPropagator, which have just to backpropagate the error in 
+the way your previous SupervisedTeachBlocks did in their learn() function!.
+In this way, the BackPropLearningAlgorithm class would contain a 
+reference to a network, a vector of ErrorBackPropagators, a vector of 
+Modifiers, a mask vector of modifiables, and a vector of 
+(nOutputClusters) vectors of teachingInputs. It would function in the 
+following simple way: set the teachingInputs, spread the network, call 
+all the ErrorBackPropagator in the right order and call all the 
+(enabled) Modifiers in the right order.
+
+That's enough for now.
+May be the current framework (which we had discussed together) is not 
+the best way to implement LearningAlgorithms. But before looking for 
+something else, we need to find real problems of this, expecially if the 
+something else re-propose the same problems of the very first 
+implementation, which pushed us to arrive to this solution.
+
+Ciao,
+Marco
+
+
+Gianluca wrote:
+&gt;<i> Hello,
+</I>&gt;<i> I reviewed the code developed so far for learning neural network and:
+</I>&gt;<i> The first attempt was too much closer to backpropagation needs and not
+</I>&gt;<i> very flexible from OOP point of view;
+</I>&gt;<i> The second attempt, maybe, is too much abstract. Because the learning
+</I>&gt;<i> rules, at the end, are simply function that returns the amount of
+</I>&gt;<i> parameter modification; but I think that is not so useful to implement
+</I>&gt;<i> the learning rule starting from this point of view... because this lead
+</I>&gt;<i> to think that all rules can have the same structure of the 'classic'
+</I>&gt;<i> Hebb rule (see the todo of Marco). Yes, it's true, but maybe not useful
+</I>&gt;<i> for the NNFW point of view.
+</I>&gt;<i> So, I think to categorize the rules depending on the meaning (and the
+</I>&gt;<i> role) of rule's parameters... for example:
+</I>&gt;<i> the Hebb rule is: &#916;&#969; = &#951;xy where x is the pre-sinaptic activity and y is
+</I>&gt;<i> the post-sinaptic activity... and the so-called delta-rule is: &#916;&#969; = &#951;ex
+</I>&gt;<i> where x is the input of neuron y and e is the error (d-y) of y neuron.
+</I>&gt;<i> These two rules are the same functional structure, but the variable has
+</I>&gt;<i> different meanings, and also the second one require a third 'external'
+</I>&gt;<i> variabile, the desired output y.
+</I>&gt;<i> After that, I propose the following classes:
+</I>&gt;<i> 
+</I>&gt;<i> - one class: AbstractRule with the only method apply();
+</I>&gt;<i> I assume that the changing parameters can be vector or matrix, and this
+</I>&gt;<i> class manages both, so the subclasses doesn't have to be splitted in two
+</I>&gt;<i> hierarchies
+</I>&gt;<i> - at least four subclasses (abstract again): ErrorCorrectionRule,
+</I>&gt;<i> HebbianRule, SimulatedAnnealingRule, CreditAssignmentRule
+</I>&gt;<i> each of these rules impose to give inputs accordingly with the
+</I>&gt;<i> 'semantic' of the rule, for example:
+</I>&gt;<i> The ErrorCorrectionRule require to set also a desired input
+</I>&gt;<i> The HebbianRule, instead, require only the pre-synaptic and
+</I>&gt;<i> post-synpatic activity
+</I>&gt;<i> and SimulatedAnnealingRule requires stocastic functions in order to
+</I>&gt;<i> select and change the parameters,
+</I>&gt;<i> and so on.
+</I>&gt;<i> 
+</I>&gt;<i> This is a slighty modification of the new learning classes, but I think
+</I>&gt;<i> that stress more on the 'semantic' of rule's inputs/parameters.
+</I>&gt;<i> 
+</I>&gt;<i> These classes will be used at run-time inside LearningBlocks, a parallel
+</I>&gt;<i> hierarchy of Cluster &amp; Linker. For istance, the class BiasedCluster has
+</I>&gt;<i> a parallel (or adaptor, or learner) class, BiasedClusterLearner that
+</I>&gt;<i> binds the free-parameters (i.e. the biases vector) with rule inputs
+</I>&gt;<i> (i.e. the HebbianRule).
+</I>&gt;<i> This is not easy to do due to high-variability of rule's interfaces...
+</I>&gt;<i> so, I'm looking for a way to expose the rule interface through Learners
+</I>&gt;<i> hierarchy, but at the moment the only ways seems via template
+</I>&gt;<i> parametrization.
+</I>&gt;<i> I would like to avoid the template parametrization, but ... :-(
+</I>&gt;<i> 
+</I>&gt;<i> And at the end the ultimate step, construct big classes that implements
+</I>&gt;<i> a whole learning procedure, i.e.: backpropagation for feed-forward nets,
+</I>&gt;<i> using the classes described above. (Maybe, after released the 1.0 version)
+</I>&gt;<i> 
+</I>&gt;<i> What do you think about ??
+</I>&gt;<i> I've written in english, because an another guy joined to this mailing
+</I>&gt;<i> list... and his contribution might be very useful because he use
+</I>&gt;<i> learning techniques.
+</I>&gt;<i> So, please give feedback in english.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Gianluca
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000064.html">[Nnfw-users] Thinking about Learning Paradigms...
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

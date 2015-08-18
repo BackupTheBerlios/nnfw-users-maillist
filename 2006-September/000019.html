@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] MSE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20MSE&In-Reply-To=%3CC136ED4C.FB1%25eduardo.coutinho%40plymouth.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000018.html">
+   <LINK REL="Next"  HREF="000020.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] MSE</H1>
+    <B>EC</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20MSE&In-Reply-To=%3CC136ED4C.FB1%25eduardo.coutinho%40plymouth.ac.uk%3E"
+       TITLE="[Nnfw-users] MSE">eduardo.coutinho at plymouth.ac.uk
+       </A><BR>
+    <I>Wed Sep 20 19:06:20 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000018.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+        <LI>Next message: <A HREF="000020.html">[Nnfw-users] MSE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Gianluca
+
+The calculation of the MSE is attached to RealVec. Can you add a new
+procedure to calculate it independently of it. Otherwise we need to create a
+fictitious  RealVec to calculate it. Can you add RMS as well?
+By the way: is it better to use RMS or MSE to analyze the output errors of
+an Elman NN? What do you say Marco? In training the NNFW uses MSE ... In
+analysis I am using RMS.
+
+Thanks,
+Eduardo.
+
+00138 Real RealVec::mse( const RealVec&amp; target, const RealVec&amp; actual ) {
+00139 #ifdef NNFW_DEBUG
+00140     if ( target.size() != actual.size() ) {
+00141         nnfwMessage( NNFW_ERROR, &quot;Error in mse: target and actual
+vectors have different size&quot; );
+00142         return 0.0;
+00143     }
+00144 #endif
+00145     RealVec error( target.size() );
+00146     error.assign(target);
+00147     error -= actual;
+00148     error.square();
+00149     return error.mean();
+00150 };
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000018.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+	<LI>Next message: <A HREF="000020.html">[Nnfw-users] MSE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

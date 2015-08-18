@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Check sulla struttura di una NN feedforward
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Check%20sulla%20struttura%20di%20una%20NN%20feedforward&In-Reply-To=%3C162BBD61-3771-430E-A45D-3F34C425A89F%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000047.html">
+   <LINK REL="Next"  HREF="000049.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Check sulla struttura di una NN feedforward</H1>
+    <B>Fabio Ruini</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Check%20sulla%20struttura%20di%20una%20NN%20feedforward&In-Reply-To=%3C162BBD61-3771-430E-A45D-3F34C425A89F%40gmail.com%3E"
+       TITLE="[Nnfw-users] Check sulla struttura di una NN feedforward">fabio.ruini at gmail.com
+       </A><BR>
+    <I>Mon Oct 30 10:36:46 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000047.html">[Nnfw-users] Check sulla struttura di una NN feedforward
+</A></li>
+        <LI>Next message: <A HREF="000049.html">[Nnfw-users] Check sulla struttura di una NN feedforward
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ehm... effettivamente, ora che ho fatto qualche prova un po' pi&#249;  
+seria, mi sono accorto che funziona tutto bene... :-/
+
+Ma egoisticamente, posso dire che la mail mi &#232; stata comunque utile  
+per quell'inclusione errata che mi hai segnalato... :-)
+
+Grazie, grazie, grazie...
+
+PS: nel giro di un paio di giorni, cos&#236; ad occhio, dovrei riuscire a  
+finire di scrivere il codice della mia simulazione... e dedicarmi al  
+tutorial... :-)
+
+A presto,
+Fabio
+
+Il giorno 29/ott/06, alle ore 23:45, Gianluca ha scritto:
+
+&gt;<i> Ciao Fabio,
+</I>&gt;<i> giusto perch&#233; non mi andava di fare niente... e visto che il tuo  
+</I>&gt;<i> codice
+</I>&gt;<i> pu&#242; essere buono per un futuro esempio da mettere nella
+</I>&gt;<i> documentazione... o preso il tuo codice, l'ho compilato... e ho  
+</I>&gt;<i> cercato
+</I>&gt;<i> di capire il tuo problema.
+</I>&gt;<i> Ed ho visto che hai fatto tutto nel modo giusto, infatti a me l'output
+</I>&gt;<i> varia... eccoti un esempio di un po' di run:
+</I>&gt;<i> 0       1
+</I>&gt;<i> 0       0
+</I>&gt;<i> 1       0
+</I>&gt;<i> 1       0
+</I>&gt;<i> 0       0
+</I>&gt;<i> 0       0
+</I>&gt;<i> 1       1
+</I>&gt;<i> 1       1
+</I>&gt;<i> 0       0
+</I>&gt;<i> 1       0
+</I>&gt;<i>
+</I>&gt;<i> Per&#242;, alcuni commenti li devo fare ... quindi continua a leggere :-)
+</I>&gt;<i>
+</I>&gt;<i> Fabio Ruini ha scritto:
+</I>&gt;&gt;<i> Ciao a tutti...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> output-&gt;getOutput(1) &lt;&lt; &quot;\n&quot;;) dopo aver effettuato lo &quot;step&quot;, i
+</I>&gt;&gt;<i> valori non variano rispetto a quelli che la rete mi restituisce prima
+</I>&gt;&gt;<i> del net-&gt;step().
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Questo accade perch&#232; l'output viene calcolato non appena settati gli
+</I>&gt;&gt;<i> input (e quindi il richiamo a net-&gt;step() &#232; superfluo) o dite che c'&#232;
+</I>&gt;&gt;<i> un qualche erroraccio nel mio codice?
+</I>&gt;&gt;<i>
+</I>&gt;<i> Non c'&#232; nessun errore nel tuo codice... e gli output NON vengono  
+</I>&gt;<i> settati
+</I>&gt;<i> appena setti gli input !!
+</I>&gt;<i> nn-&gt;step() &#232; fondamentale per poter calcolare gli output() ed &#232;
+</I>&gt;<i> OBBLIGATORIO chiamarla...
+</I>&gt;<i> ed in effetti tu fai tutto nel modo giusto ... di fatto a me funziona
+</I>&gt;<i> bene il tuo codice ;-)
+</I>&gt;&gt;<i> Ultimissima cosa. Per settare i neuroni di output come booleani io ho
+</I>&gt;&gt;<i> impostato una funzione di attivazione a gradino, di questo tipo:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> output-&gt;setFunction(StepFunction(0.0, 1.0, 0.5)); // Output layer
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Dite che pu&#242; andare?
+</I>&gt;&gt;<i>
+</I>&gt;<i> Perfetto !!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Questo &#232; il riassunto del mio codice:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> // Including the various NNFW's header files
+</I>&gt;&gt;<i> #include &quot;nnfw.h&quot;
+</I>&gt;&gt;<i> #include &quot;random.h&quot;
+</I>&gt;&gt;<i> #include &quot;fakecluster.h&quot;
+</I>&gt;&gt;<i> #include &quot;biasedcluster.h&quot;
+</I>&gt;&gt;<i> #include &quot;matrixlinker.h&quot;
+</I>&gt;&gt;<i> #include &quot;realmat.h&quot;
+</I>&gt;&gt;<i>
+</I>&gt;<i> E' un ERRORE includere &quot;realmat.h&quot; ... non &#232; un file header creato per
+</I>&gt;<i> essere incluso direttamente... ti sei salvato in questo contesto  
+</I>&gt;<i> perch&#232;
+</I>&gt;<i> accidentalmente hai incluso prima &quot;nnfw.h&quot; che al suo interno include
+</I>&gt;<i> &quot;types.h&quot; il quale include nel modo appropriato &quot;realmat.h&quot; ... ed &#232;
+</I>&gt;<i> andato tutto liscio !!!
+</I>&gt;<i> Se avessi incluso per prima &quot;realmat.h&quot; avresti ottenuto un botto di
+</I>&gt;<i> errori !!!
+</I>&gt;<i> Promemoria per me: &quot;Far Stampare un Messaggio di Errore Quando Si  
+</I>&gt;<i> Tenta
+</I>&gt;<i> di Includere Direttamente RealMat.h&quot;
+</I>&gt;&gt;<i> // Declaring the use of namespace &quot;nnfw&quot;
+</I>&gt;&gt;<i> using namespace nnfw;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> // Main
+</I>&gt;&gt;<i> int main() {
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Random number generator initialization
+</I>&gt;&gt;<i> 	Random::setSeed(time(0));
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Input, hidden and output layer's definition
+</I>&gt;&gt;<i> 	BiasedCluster *hidden, *output, *inF, *inW, *inM;
+</I>&gt;&gt;<i> 	hidden = new BiasedCluster(9); // Hidden layer, formed by 9 neural
+</I>&gt;&gt;<i> units
+</I>&gt;&gt;<i> 	output = new BiasedCluster(2); // Output layer, formed by 2 neural
+</I>&gt;&gt;<i> units
+</I>&gt;&gt;<i> 	inF = new BiasedCluster(2); // Cluster #1 of the input layer (2
+</I>&gt;&gt;<i> neurons)
+</I>&gt;&gt;<i> 	inW = new BiasedCluster(2); // Cluster #2 of the input layer (2
+</I>&gt;&gt;<i> neurons)
+</I>&gt;&gt;<i> 	inM = new BiasedCluster(1); // Cluster #3 of the input layer (1
+</I>&gt;&gt;<i> neurons)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Activation functions' setting
+</I>&gt;&gt;<i> 	inF-&gt;setFunction(IdentityFunction()); // Cluster #1 of the input  
+</I>&gt;&gt;<i> layer
+</I>&gt;&gt;<i> 	inW-&gt;setFunction(IdentityFunction()); // Cluster #2 of the input  
+</I>&gt;&gt;<i> layer
+</I>&gt;&gt;<i> 	inM-&gt;setFunction(IdentityFunction()); // Cluster #3 of the input  
+</I>&gt;&gt;<i> layer
+</I>&gt;&gt;<i> 	hidden-&gt;setFunction(SigmoidFunction()); // Hidden layer
+</I>&gt;&gt;<i> 	output-&gt;setFunction(StepFunction(0.0, 1.0, 0.5)); // Output layer
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Synaptic connections' setting
+</I>&gt;&gt;<i> 	MatrixLinker *fh, *wh, *mh, *ho;
+</I>&gt;&gt;<i> 	fh = new MatrixLinker(inF,hidden); // Connections between the
+</I>&gt;&gt;<i> cluster #1 and the HL
+</I>&gt;&gt;<i> 	wh = new MatrixLinker(inW,hidden); // Connections between the
+</I>&gt;&gt;<i> cluster #2 and the HL
+</I>&gt;&gt;<i> 	mh = new MatrixLinker(inM,hidden); // Connections between the
+</I>&gt;&gt;<i> cluster #3 and the HL
+</I>&gt;&gt;<i> 	ho = new MatrixLinker(hidden,output); // Connections between the HL
+</I>&gt;&gt;<i> and the OL
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// NN's creation
+</I>&gt;&gt;<i> 	BaseNeuralNet *net;
+</I>&gt;&gt;<i> 	net = new BaseNeuralNet();
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Inserting the clusters
+</I>&gt;&gt;<i> 	net-&gt;addCluster(inF, true);
+</I>&gt;&gt;<i> 	net-&gt;addCluster(inW, true);
+</I>&gt;&gt;<i> 	net-&gt;addCluster(inM, true);
+</I>&gt;&gt;<i> 	net-&gt;addCluster(hidden);
+</I>&gt;&gt;<i> 	net-&gt;addCluster(output, false, true);
+</I>&gt;&gt;<i> 	
+</I>&gt;&gt;<i> 	// Adding the linkers
+</I>&gt;&gt;<i> 	net-&gt;addLinker(fh);
+</I>&gt;&gt;<i> 	net-&gt;addLinker(wh);
+</I>&gt;&gt;<i> 	net-&gt;addLinker(mh);
+</I>&gt;&gt;<i> 	net-&gt;addLinker(ho);
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// NN's sort
+</I>&gt;&gt;<i> 	UpdatableVec updatables_order;
+</I>&gt;&gt;<i> 	net-&gt;setOrder(updatables_order &lt;&lt; fh &lt;&lt; wh &lt;&lt; mh &lt;&lt; hidden &lt;&lt; ho &lt;&lt;
+</I>&gt;&gt;<i> output);
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Randomization of the agent's connections weights
+</I>&gt;&gt;<i> 	net-&gt;randomize(-1.0,1.0); // The weights' values moves beetwen -1.0
+</I>&gt;&gt;<i> and +1.0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Set inputs
+</I>&gt;&gt;<i> 	inM-&gt;setInput(0,0.5); // Simulation #1: motivation fixed at 0.5  
+</I>&gt;&gt;<i> level
+</I>&gt;&gt;<i> 	inF-&gt;setInput(0,-0.89);
+</I>&gt;&gt;<i> 	inF-&gt;setInput(1,0.45);
+</I>&gt;&gt;<i> 	inW-&gt;setInput(0,0.43);
+</I>&gt;&gt;<i> 	inW-&gt;setInput(1,-0.233);
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 	// Calculate the NN's output
+</I>&gt;&gt;<i> 	net-&gt;step();
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> }
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Un grazie di cuore, fin d'ora, a chi potr&#224; risolvere questi miei
+</I>&gt;&gt;<i> dubbi...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ciao,
+</I>&gt;&gt;<i> Fabio
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Nnfw-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000047.html">[Nnfw-users] Check sulla struttura di una NN feedforward
+</A></li>
+	<LI>Next message: <A HREF="000049.html">[Nnfw-users] Check sulla struttura di una NN feedforward
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

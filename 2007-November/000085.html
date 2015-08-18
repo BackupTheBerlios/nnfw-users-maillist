@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Passing values from a matrix of float values to a	RealMat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Passing%20values%20from%20a%20matrix%20of%20float%20values%20to%0A%20a%09RealMat&In-Reply-To=%3C473898AA.9020801%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000084.html">
+   <LINK REL="Next"  HREF="000086.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Passing values from a matrix of float values to a	RealMat</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Passing%20values%20from%20a%20matrix%20of%20float%20values%20to%0A%20a%09RealMat&In-Reply-To=%3C473898AA.9020801%40yahoo.it%3E"
+       TITLE="[Nnfw-users] Passing values from a matrix of float values to a	RealMat">emmegian at yahoo.it
+       </A><BR>
+    <I>Mon Nov 12 19:17:14 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000084.html">[Nnfw-users] Passing values from a matrix of float values to a	RealMat
+</A></li>
+        <LI>Next message: <A HREF="000086.html">[Nnfw-users] Passing values from a matrix of float values to	a	RealMat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#85">[ date ]</a>
+              <a href="thread.html#85">[ thread ]</a>
+              <a href="subject.html#85">[ subject ]</a>
+              <a href="author.html#85">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Fabio...
+... I want to reply... come on... study a bit of C++... but now... I'll
+tell you where is the problem:
+If you define the stored_weights_TargetAngleToHidden as a RealMat* (a
+pointer to a RealMat)
+then... the following access is wrong (but it compiles):
+
+stored_weights_TargetAngleToHidden[j][i] = weightsTargetAngleToHidden 
+[j][i];
+
+You have to write instead:
+
+(*stored_weights_TargetAngleToHidden)[j][i] = weightsTargetAngleToHidden 
+[j][i];
+
+
+I left to you do understand where is the differences... and why C++
+compiler compiles both of them :-D :-D
+
+Ciao,
+Gianluca
+
+
+Fabio Ruini ha scritto:
+&gt;<i> Dear all,
+</I>&gt;<i>
+</I>&gt;<i> I'm experiencing a strange behaviour by the RealMat class (NNFW  
+</I>&gt;<i> 0.9.3) used in my software.
+</I>&gt;<i>
+</I>&gt;<i> In first instance, according to the following code, I create a RealMat:
+</I>&gt;<i>
+</I>&gt;<i> // RealMat declaration/creation
+</I>&gt;<i> nnfw::RealMat *stored_weights_TargetAngleToHidden;
+</I>&gt;<i> stored_weights_TargetAngleToHidden = new nnfw::RealMat(3,  
+</I>&gt;<i> hidden_neurons);
+</I>&gt;<i>
+</I>&gt;<i> Then I create a matrix (same size as the RealMat) of float values...
+</I>&gt;<i>
+</I>&gt;<i> // float matrix declaration
+</I>&gt;<i> float weightsTargetAngleToHidden[3][30]
+</I>&gt;<i>
+</I>&gt;<i> ... that I use to store some values read from a text file:
+</I>&gt;<i>
+</I>&gt;<i> QString filename_TargetAngleToHidden = dataDirectory + &quot;/ 
+</I>&gt;<i> TargetAngleToHidden.txt&quot;;
+</I>&gt;<i> std::ifstream in_TargetAngleToHidden;
+</I>&gt;<i> in_TargetAngleToHidden.open(filename_TargetAngleToHidden.toLatin1());
+</I>&gt;<i> in_TargetAngleToHidden &gt;&gt; weightsTargetAngleToHidden[j][i];
+</I>&gt;<i>
+</I>&gt;<i> Right now, everything is ok. The values contained in the text file  
+</I>&gt;<i> have been correctly read and stored into the matrix (I'm sure of  
+</I>&gt;<i> this). The problem is that I get a run-time error when I try to copy  
+</I>&gt;<i> these values to the previously declared RealMat using the following  
+</I>&gt;<i> syntax:
+</I>&gt;<i>
+</I>&gt;<i> stored_weights_TargetAngleToHidden[j][i] = weightsTargetAngleToHidden 
+</I>&gt;<i> [j][i];
+</I>&gt;<i>
+</I>&gt;<i> What is driving me crazy is the fact that if I try something  
+</I>&gt;<i> different, like:
+</I>&gt;<i>
+</I>&gt;<i> float a = 2.2;
+</I>&gt;<i> stored_weights_TargetDistanceToHidden[j][i] = a;
+</I>&gt;<i>
+</I>&gt;<i> everything seem to work correctly!
+</I>&gt;<i>
+</I>&gt;<i> Anyone could please clarify me where I'm wrong? :-/
+</I>&gt;<i>
+</I>&gt;<i> Thanks in advance!
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000084.html">[Nnfw-users] Passing values from a matrix of float values to a	RealMat
+</A></li>
+	<LI>Next message: <A HREF="000086.html">[Nnfw-users] Passing values from a matrix of float values to	a	RealMat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#85">[ date ]</a>
+              <a href="thread.html#85">[ thread ]</a>
+              <a href="subject.html#85">[ subject ]</a>
+              <a href="author.html#85">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

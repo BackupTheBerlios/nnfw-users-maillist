@@ -1,0 +1,68 @@
+From gmaxera at gmail.com  Fri May 24 07:23:43 2013
+From: gmaxera at gmail.com (Gianluca Emme)
+Date: Fri, 24 May 2013 07:23:43 +0200
+Subject: [Nnfw-users] Web Page Moved
+In-Reply-To: <7043EC81-C8E6-4B67-AD3A-12FD8E73589A@gmail.com>
+References: <B247C028-869B-4AFB-911B-1CC2A76DD558@gmail.com>
+	<7043EC81-C8E6-4B67-AD3A-12FD8E73589A@gmail.com>
+Message-ID: <CAPddqDU5ofo-1OqhQwQsJ3K+A8t2o0bN=O1_rr8R6R5fSrS=zQ@mail.gmail.com>
+
+Dear Eduardo,
+the NNFW framework version 1.1.5 is very old and not maintained anymore.
+The NNFW is now a sub-library of a bigger framework called FARSA.
+(http://laral.istc.cnr.it/farsa ).
+I'm sorry, but at the moment the only solution for you is to compile
+NNFW from sources.
+You can still download old sources at this page:
+http://laral.istc.cnr.it/laral++/nnfw/downloads.php
+
+Cheers,
+Gianluca.
+
+
+2013/5/23 Eduardo Coutinho <admin at eadward.org>:
+> Dear NNfw Users,
+>
+> I had to reinstall today the NNfw (1.1.5) on a Macbook Pro running OS X
+> Mountain Lion (10.8) and can't compile my application. I keep getting the
+> following warning:
+>
+> :-1: warning: ignoring file /Library/Frameworks//nnfw.framework/nnfw, file
+> was built for unsupported file format ( 0xce 0xfa 0xed 0xfe 0x 7 0x 0 0x 0
+> 0x 0 0x 3 0x 0 0x 0 0x 0 0x 6 0x 0 0x 0 0x 0 ) which is not the architecture
+> being linked (x86_64): /Library/Frameworks//nnfw.framework/nnfw
+>
+> and then an error:
+>
+> :-1: error: symbol(s) not found for architecture x86_64
+>
+> Can you help? I'm a bit desperate because I have to run some simulations
+> urgently and because my old computer is dead (the reason why I have to use
+> this one) I am stuck with this (new) one.
+>
+> Thanks in advance.
+>
+> Cheers,
+> Eduardo.
+>
+>
+>
+> On 23 Jun 2011, at 12:31, Gianluca Massera <gmaxera at gmail.com> wrote:
+>
+> Dear all NNFW users,
+> the web page has been moved to:
+>
+> http://laral.istc.cnr.it/laral++/nnfw
+>
+> the website http://www.nnfw.org is permanently down.
+>
+> Sorry for any inconvenience,
+> Gianluca.
+>
+> _______________________________________________
+> Nnfw-users mailing list
+> Nnfw-users at lists.berlios.de
+> https://lists.berlios.de/mailman/listinfo/nnfw-users
+>
+>
+

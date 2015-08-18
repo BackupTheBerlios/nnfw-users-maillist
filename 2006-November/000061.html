@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] NNFW e QT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20NNFW%20e%20QT&In-Reply-To=%3C4561CF39.4060207%40unisi.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000060.html">
+   <LINK REL="Next"  HREF="000062.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] NNFW e QT</H1>
+    <B>Marco Mirolli</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20NNFW%20e%20QT&In-Reply-To=%3C4561CF39.4060207%40unisi.it%3E"
+       TITLE="[Nnfw-users] NNFW e QT">mirolli2 at unisi.it
+       </A><BR>
+    <I>Mon Nov 20 16:52:25 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000060.html">[Nnfw-users] Problema con NNFW 0.6.6
+</A></li>
+        <LI>Next message: <A HREF="000062.html">[Nnfw-users] NNFW e QT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Caro Gianluca,
+so che questa mail non ti piacer&#224;, ma la devo scrivere.
+
+E' veramente necassario far dipendere il nostro NNFW dalle qt?
+Immagino che questa svolta sia dovuta al fatto che tu usi e conosci bene
+le QT, che comprendono anche una buona gestione di XML. Ma non si pu&#242;
+fare altrimenti (usare qualche altra libreria, meno impegnativa)?
+
+Il problema &#232; l'usabilit&#224;. Io, ad esempio, da quando &#232; uscita la
+versione 0.6 che dipende da QT4 non mi sono pi&#249; aggiornato perch&#233; le QT4
+non ce l'ho. Ovviamente questo &#232; dipeso anche dal fatto che non ho avuto
+tempo di programmare e dedicare tempo al NNFW, ma rimane il problema 
+generale: far dipendere la nostra (piccola) libreria di reti neurali da 
+una (enorme) libreria mi sembra pericoloso. Fra l'altro, le QT non solo 
+sono enormi, ma sono anche semi-proprietarie: fino alla versione 3 su 
+Windows erano solo a pagamento, adesso c'&#232; una versione free, ma che non 
+supporta l'integrazione con Visual Studio; e la 5 come sar&#224;? Chiss&#224;...
+
+Insomma: questa scelta ha gi&#224; impedito a me (che, al momento, sono uno 
+dei due sviluppatori) di aggiornarmi all'ultima versione del NNFW. Mi 
+immagino quanto possa disincentivare chiunque si voglia accostare al NNFW.
+
+Io, se possibile, cercherei di mantenere indipendenza completa del NNFW 
+da qualsiasi libreria (soprattutto se grande e proprietaria). E 
+introdurrei le QT solo quando implementeremo l'interfaccia grafica, che 
+dovrebbe comunque possibilmente rimanere indipendente dal cuore della 
+libreria!
+
+Ciao,
+Marco
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000060.html">[Nnfw-users] Problema con NNFW 0.6.6
+</A></li>
+	<LI>Next message: <A HREF="000062.html">[Nnfw-users] NNFW e QT
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

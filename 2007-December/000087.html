@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] (a lot of) warnings while compiling NNFW-based	applications
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20%28a%20lot%20of%29%20warnings%20while%20compiling%20NNFW-based%0A%09applications&In-Reply-To=%3C9B82AD54-92E4-4286-81A6-52AA0251409F%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000088.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] (a lot of) warnings while compiling NNFW-based	applications</H1>
+    <B>Fabio Ruini</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20%28a%20lot%20of%29%20warnings%20while%20compiling%20NNFW-based%0A%09applications&In-Reply-To=%3C9B82AD54-92E4-4286-81A6-52AA0251409F%40gmail.com%3E"
+       TITLE="[Nnfw-users] (a lot of) warnings while compiling NNFW-based	applications">fabio.ruini at gmail.com
+       </A><BR>
+    <I>Fri Dec 14 16:55:12 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000088.html">[Nnfw-users] (a lot of) warnings while compiling	NNFW-based	applications
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+
+I recently upgraded my (wonderful) MacBook Pro to Leopard, the latest  
+OS X version. XCode - the IDE I'm currently using - has been updated  
+as well. Now I'm still able to successfully compile my application,  
+but I get a lot of warnings about &quot;different visibility&quot; issues during  
+the linking phase.
+
+I attach here some of these warnings:
+
+ld: warning QLatin1Char::QLatin1Char(char)has different visibility (2)  
+in /Users/fabioruini/Documents/University/Plymouth/MAVs/Simulations/ 
+MAVs_B1/libnnfw.a(messages.o) and (1) in /Users/fabioruini/Documents/ 
+University/Plymouth/MAVs/Simulations/MAVs_B1/build/MAVs_B1.build/Debug/ 
+MAVs_B1.build/Objects-normal/i386/mainWindow.o
+ld: warning QLatin1Char::unicode() const has different visibility (2)  
+in /Users/fabioruini/Documents/University/Plymouth/MAVs/Simulations/ 
+MAVs_B1/libnnfw.a(messages.o) and (1) in /Users/fabioruini/Documents/ 
+University/Plymouth/MAVs/Simulations/MAVs_B1/build/MAVs_B1.build/Debug/ 
+MAVs_B1.build/Objects-normal/i386/mainWindow.o
+ld: warning QChar::QChar(QLatin1Char)  has different visibility (2)  
+in /Users/fabioruini/Documents/University/Plymouth/MAVs/Simulations/ 
+MAVs_B1/libnnfw.a(messages.o) and (1) in /Users/fabioruini/Documents/ 
+University/Plymouth/MAVs/Simulations/MAVs_B1/build/MAVs_B1.build/Debug/ 
+MAVs_B1.build/Objects-normal/i386/mainWindow.o
+ld: warning q_atomic_increment(int volatile*)has different visibility  
+(2) in /Users/fabioruini/Documents/University/Plymouth/MAVs/ 
+Simulations/MAVs_B1/libnnfw.a(messages.o) and (1) in /Users/fabioruini/ 
+Documents/University/Plymouth/MAVs/Simulations/MAVs_B1/build/ 
+MAVs_B1.build/Debug/MAVs_B1.build/Objects-normal/i386/main.o
+ld: warning q_atomic_decrement(int volatile*)has different visibility  
+(2) in /Users/fabioruini/Documents/University/Plymouth/MAVs/ 
+Simulations/MAVs_B1/libnnfw.a(messages.o) and (1) in /Users/fabioruini/ 
+Documents/University/Plymouth/MAVs/Simulations/MAVs_B1/build/ 
+MAVs_B1.build/Debug/MAVs_B1.build/Objects-normal/i386/main.o
+
+Do you think it's a problem related to NNFW or to my application?
+
+Cheers,
+
+-- 
+Fabio Ruini
+
+Adaptive Behaviour &amp; Cognition Research Group
+Centre for Interactive Intelligent Systems
+School of Computing, Communications and Electronics
+
+B110, Portland Square
+University of Plymouth
+Plymouth PL4 8AA - United Kingdom
+
+E-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">fabio.ruini at plymouth.ac.uk</A>
+Web: <A HREF="http://www.fabioruini.eu">http://www.fabioruini.eu</A>
+Skype: fabio.ruini
+Phone: +44 (0)1752 232548
+Mobile: +44 (0)7948 308124
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000088.html">[Nnfw-users] (a lot of) warnings while compiling	NNFW-based	applications
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Release 1.1.0 is out
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Release%201.1.0%20is%20out&In-Reply-To=%3C47FE0B14.3060304%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000128.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Release 1.1.0 is out</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Release%201.1.0%20is%20out&In-Reply-To=%3C47FE0B14.3060304%40yahoo.it%3E"
+       TITLE="[Nnfw-users] Release 1.1.0 is out">emmegian at yahoo.it
+       </A><BR>
+    <I>Thu Apr 10 14:41:56 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000128.html">[Nnfw-users] Release 1.1.1 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>  * WARNING:
+	The LinearFunction of previous version is now called
+        RampFunction. From this version
+	a new LinearFunction class was added and it differs from
+        RampFunction.
+
+  * Summary of important changes
+	- added a method of BaseNeuralNet for getting hidden clusters
+	- speedup BaseNeuralNet::getByName for big networks
+	- added BaseNeuralNet::byName template method for an easy
+                retreving of Clusters and Linkers added to BaseNeuralNet
+                objects
+	- added NNFW_VERSION macro
+	- added min and max function to types.h
+	- added SimpleTimer class
+	- added support for Mac Os X Frameworks bundle
+	- added Pattern and PatternSet classes for an easy setup of
+                Learning/Test sets
+	- changed LearningAlgorithm interface for dealing with Pattern
+                and PatternSet
+	- added method for calculating MSE and RMSD to LearningAlgorithm
+	- more comments on BackPropagationAlgo::getError
+	- added new output functions: LinearFunction (y=m*x+b),
+                WinnerTakeAll, Periodic functions: PseudoGauss,
+                Triangle, Sawtooth
+	- rename old LinearFunction to RampFunction
+	- updated Factory with new output functions
+	- added max/minIndex and max/minValue to RealVec
+	- added erase method to VectorData
+	- added a parameter on saveXML for choosing the precision for
+                real data
+	- augmented precision when saving real data on XML file
+
+enjoy yourself,
+Gianluca
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000128.html">[Nnfw-users] Release 1.1.1 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#127">[ date ]</a>
+              <a href="thread.html#127">[ thread ]</a>
+              <a href="subject.html#127">[ subject ]</a>
+              <a href="author.html#127">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

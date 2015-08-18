@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] nnfw e xor
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20nnfw%20e%20xor&In-Reply-To=%3C450E6830.1010108%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000009.html">
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] nnfw e xor</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20nnfw%20e%20xor&In-Reply-To=%3C450E6830.1010108%40yahoo.it%3E"
+       TITLE="[Nnfw-users] nnfw e xor">emmegian at yahoo.it
+       </A><BR>
+    <I>Mon Sep 18 11:34:40 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000009.html">[Nnfw-users] nnfw e xor
+</A></li>
+        <LI>Next message: <A HREF="000011.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao Andrea,
+si... in queste ultime settimane si &#232; evoluta un bel po'...
+ho capito dov'&#232; l'errore... nelle righe tipo queste:
+ aCluster-&gt;setUpdater( new SigmoidUpdater(1.0) )
+va tolto il 'new' :
+ aCluster-&gt;setUpdater( SigmoidUpdater(1.0) )
+
+Ciao,
+Gianluca
+
+
+Andrea ha scritto:
+&gt;<i> grazie per i vari xor, solo due compilano con l'ultima versione di nnfw
+</I>&gt;<i> (xor3 e xor4) mentre per gli altri g++ mi da questerrore:
+</I>&gt;<i> xor_s.cpp:37: error: no matching function for call to
+</I>&gt;<i> 'nnfw::BiasedCluster::setUpdater(nnfw::SigmoidUpdater*)'
+</I>&gt;<i> immagino che la libreria in questo ultimo periodo si sia evoluta in modo
+</I>&gt;<i> da modificare questa funzione.
+</I>&gt;<i>
+</I>&gt;<i> grazie ancora.
+</I>&gt;<i>
+</I>&gt;<i> a.m.
+</I>&gt;<i>
+</I>&gt;<i> Gianluca wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> --------
+</I>&gt;&gt;<i> L'allegato :-D
+</I>&gt;&gt;<i> --------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ciao Andrea,
+</I>&gt;&gt;<i> per il &quot;;&quot; ... semplicemente ho imparato che la sintassi del C++
+</I>&gt;&gt;<i> richiede il &quot;;&quot; quando si chiude la definizione di una funzione inline
+</I>&gt;&gt;<i> all'interno di un file .h ...
+</I>&gt;&gt;<i> ... evidentemente mi sbaglio io ... :-( cercher&#242; di risolverlo.
+</I>&gt;&gt;<i> Per lo Xor ... mi spiace ma il codice sul wiki &#232; molto vecchio ed negli
+</I>&gt;&gt;<i> ultimi mesi ho riscritto varie volte la parte matematica per renderla
+</I>&gt;&gt;<i> pi&#249; efficiente... ma
+</I>&gt;&gt;<i> ... ti allego i miei codici per testare lo xor, c'&#232; ne sono quattro
+</I>&gt;&gt;<i> versioni !!
+</I>&gt;&gt;<i> Spero siano chiare.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ciao,
+</I>&gt;&gt;<i> Gianluca
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i>  --
+</I>&gt;<i>  Email.it, the professional e-mail, gratis per te: <A HREF="http://www.email.it/f">http://www.email.it/f</A>
+</I>&gt;<i>  
+</I>&gt;<i>  Sponsor:
+</I>&gt;<i>  Corso base ASP Gratis - Video con trucchi e segreti per imparare a creare il tuo Sito Web Dinamico con la tecnologia ASP
+</I>&gt;<i>  Clicca qui: <A HREF="http://adv.email.it/cgi-bin/foclick.cgi?mid=5146&amp;d=17-9">http://adv.email.it/cgi-bin/foclick.cgi?mid=5146&amp;d=17-9</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000009.html">[Nnfw-users] nnfw e xor
+</A></li>
+	<LI>Next message: <A HREF="000011.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

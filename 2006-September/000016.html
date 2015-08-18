@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Consiglio su un cambio di nome...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Consiglio%20su%20un%20cambio%20di%20nome...&In-Reply-To=%3CC135CFDB.F88%25eduardo.coutinho%40plymouth.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Consiglio su un cambio di nome...</H1>
+    <B>EC</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Consiglio%20su%20un%20cambio%20di%20nome...&In-Reply-To=%3CC135CFDB.F88%25eduardo.coutinho%40plymouth.ac.uk%3E"
+       TITLE="[Nnfw-users] Consiglio su un cambio di nome...">eduardo.coutinho at plymouth.ac.uk
+       </A><BR>
+    <I>Tue Sep 19 22:48:27 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+        <LI>Next message: <A HREF="000017.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>If I understood well what Marco says is technically correct.
+A transfer function is the &quot;ratio&quot; between the output and the input of a
+system.
+Here, being the neuron our system, you have the InputFunction the weighted
+sum of the inputs to that neuron (and these several signals are the real
+inouts to a neuron), and the OutputFunction is the so called activation
+function of a unit (the behaviour of that system to the encoded inputs). The
+TransferFuntion is the combination of both, in systems theory two serial
+blocks. In this case makes sense to call TransferFunction to the global
+process, which in this specific case we should call OutputFunction to the
+&quot;filter&quot; that the neuron is applying to the signal that comes from the
+InputFunction ( ClusterUpdater until the moment).
+Is this what you meant Marco?
+Cheers,
+Eduardo.
+
+
+On 9/19/06 3:12 PM, &quot;Gianluca&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">emmegian at yahoo.it</A>&gt; wrote:
+
+&gt;<i> Tutta la libreria sar&#224; adattata con il nuovo nome, ma non ho capito bene
+</I>&gt;<i> la tua osservazione tra OutputFunction e TransferFunction.
+</I>&gt;<i> Cmq, mi sembra molto pi&#249; intuitivo OutputFunction.
+</I>&gt;<i> Penso che adotter&#242; questa.
+</I>&gt;<i> 
+</I>&gt;<i> Ciao,
+</I>&gt;<i> Gianluca
+</I>&gt;<i> 
+</I>&gt;<i> francesco mannella ha scritto:
+</I>&gt;&gt;<i> D'accordo su OutputFunction. Per&#242; in questo caso la modifica della gerarchia
+</I>&gt;&gt;<i> per i Linker, secondo me, dovrebbe andare in parallelo, senno' si perdono i
+</I>&gt;&gt;<i> pezzi. 
+</I>&gt;&gt;<i> In alternativa, forse TransfertFunction &#232; pi&#249; intuitiva delle altre e in
+</I>&gt;&gt;<i> parte 
+</I>&gt;&gt;<i> mantiene la logica di cui parla Marco (in pratica la OutputFunction &#232; quella
+</I>&gt;&gt;<i> che decide per la linearit&#224; dell'uscita, e questo di solito lo si dice della
+</I>&gt;&gt;<i> funzione di trasferimento).
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Alle 17:29, marted&#236; 19 settembre 2006, Marco Mirolli ha scritto:
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i> Anche a me ActivationFunction sembrava la soluzione migliore ma...
+</I>&gt;&gt;&gt;<i> guardate questo interessante articolo:
+</I>&gt;&gt;&gt;<i> W. Duch and N. Jankowski (1999) Survey of neural transfer functions.
+</I>&gt;&gt;&gt;<i> Neural Computing Surveys, (2):163--212
+</I>&gt;&gt;&gt;<i> <A HREF="http://citeseer.ist.psu.edu/duch99survey.html">http://citeseer.ist.psu.edu/duch99survey.html</A>
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> L'articolo fa una tassonomia piuttosto esaustiva di funzioni per reti
+</I>&gt;&gt;&gt;<i> neurali usando i seguenti nomi:
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> activation functions = funzioni che generano il netInput
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> output functions = funzioni che, dato il netInput, generano
+</I>&gt;&gt;&gt;<i> l'attivazione del neurone
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> transfer functions = combinazioni di activation functions e output
+</I>&gt;&gt;&gt;<i> functions
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> Dunque, quelle che Duch e Jankowski chiamano activation functions nel
+</I>&gt;&gt;&gt;<i> NNFW equivalgono, grosso modo, alle implementazioni della funzione
+</I>&gt;&gt;&gt;<i> update() dei linker, mentre i nostro attuali ClusterUpdater loro li
+</I>&gt;&gt;&gt;<i> chiamano output functions.
+</I>&gt;&gt;&gt;<i> Visto che in effetti gli attuali ClusterUpdaters determinano l'output di
+</I>&gt;&gt;&gt;<i> un cluster (dato l'input), forse il nome OutputFunction (in conformit&#224;
+</I>&gt;&gt;&gt;<i> con l'articolo citato) &#232; il migliore.
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> L'articolo citato suggerisce anche che in futuro si potrebbe creare una
+</I>&gt;&gt;&gt;<i> gerarchia per le funzioni che generano il netInput, usate dai Linker,
+</I>&gt;&gt;&gt;<i> analoga all'attuale gerarchia di ClusterUpdater per i Cluster.
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> Meditate...
+</I>&gt;&gt;&gt;<i> e buon lavoro.
+</I>&gt;&gt;&gt;<i> Ciao,
+</I>&gt;&gt;&gt;<i> Marco
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> Gianluca wrote:
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i> Ciao a tutti,
+</I>&gt;&gt;&gt;&gt;<i> attualmente la funzione di attivazione dei neuroni &#232; implementata
+</I>&gt;&gt;&gt;&gt;<i> attraverso una gerarchia di classe la cui radice &#232; *ClusterUpdater*
+</I>&gt;&gt;&gt;&gt;<i> Penso che il nome non &#232; molto adatto perch&#233; non aggiorna (Updater) il
+</I>&gt;&gt;&gt;&gt;<i> Cluster... ma &#232; semplicemente una funzione che si applica ad un vettore
+</I>&gt;&gt;&gt;&gt;<i> di reali, quindi ho pensato ad altri nomi... quale pensate sia il pi&#249;
+</I>&gt;&gt;&gt;&gt;<i> adatto fra questi ???
+</I>&gt;&gt;&gt;&gt;<i>  a) VectorialFunction
+</I>&gt;&gt;&gt;&gt;<i>  b) ActivationFunction
+</I>&gt;&gt;&gt;&gt;<i>  c) NFunction
+</I>&gt;&gt;&gt;&gt;<i>  d) VecFunction
+</I>&gt;&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;&gt;<i> Ciao,
+</I>&gt;&gt;&gt;&gt;<i> Gianluca
+</I>&gt;&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Nnfw-users mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Nnfw-users mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Nnfw-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>   
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+	<LI>Next message: <A HREF="000017.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

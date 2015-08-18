@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Utilizzo del NNFW sotto Mac OS X 10.4 (Tiger)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Utilizzo%20del%20NNFW%20sotto%20Mac%20OS%20X%2010.4%20%28Tiger%29&In-Reply-To=%3C1F2024AC-D42A-4F25-8D4D-88AF96AD0F84%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000036.html">
+   <LINK REL="Next"  HREF="000038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Utilizzo del NNFW sotto Mac OS X 10.4 (Tiger)</H1>
+    <B>Fabio Ruini</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Utilizzo%20del%20NNFW%20sotto%20Mac%20OS%20X%2010.4%20%28Tiger%29&In-Reply-To=%3C1F2024AC-D42A-4F25-8D4D-88AF96AD0F84%40gmail.com%3E"
+       TITLE="[Nnfw-users] Utilizzo del NNFW sotto Mac OS X 10.4 (Tiger)">fabio.ruini at gmail.com
+       </A><BR>
+    <I>Thu Oct 26 13:04:05 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000036.html">[Nnfw-users] Utilizzo del NNFW sotto Mac OS X 10.4 (Tiger)
+</A></li>
+        <LI>Next message: <A HREF="000038.html">[Nnfw-users] Utilizzo del NNFW sotto Mac OS X 10.4 (Tiger)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ehm... e te che ne sapevi dell'esistenza del mio blog?!? :-)))
+
+Comunque perfetto... sono contento che queste poche righe ti siano  
+piaciute... :-)
+
+Per quanto riguarda la traduzione, dimmi tu come vuoi che ci  
+organizziamo... cio&#232;, ci penso io oppure (per questioni di conformit&#224;  
+con il resto del sito, lessico particolare, ecc) vuoi farla tu? io  
+confesso di non essere proprio un maestro nello scrivere in inglese,  
+ma in genere qualcosa di &quot;commestibile&quot; riesco a tirarlo fuori... e  
+di solito mi diverte pure provarci... :-p
+
+A presto,
+Fabio
+
+
+Il giorno 26/ott/06, alle ore 13:02, Gianluca ha scritto:
+
+&gt;<i> Ciao Fabio,
+</I>&gt;<i> avevo gi&#224; letto questo pezzo sul tuo blog ;-)
+</I>&gt;<i>
+</I>&gt;<i> Fabio Ruini ha scritto:
+</I>&gt;&gt;<i> Salve a tutti...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ho buttato gi&#249; qualche riga per provare a spiegare come &#232; possibile
+</I>&gt;&gt;<i> utilizzare il NNFW in ambiente Mac OS X (visto che la cosa mi ha
+</I>&gt;&gt;<i> comportato non pochi sforzi in questi due giorni... :-/). Ho scritto
+</I>&gt;&gt;<i> in italiano, ma se pu&#242; interessare per essere infilata da qualche
+</I>&gt;&gt;<i> parte, posso provare a tradurla in inglese in serata...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Bando alle ciance:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     1. scaricare dall&#8217;home page di <A HREF="http://www.nnfw.org">http://www.nnfw.org</A> il pacchetto
+</I>&gt;&gt;<i> contenente i sorgenti della versione 0.5.0, quindi scompattarlo in
+</I>&gt;&gt;<i> una directory a scelta;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     2. scaricare il software CMake (Cross-platform Make). L&#8217;home page
+</I>&gt;&gt;<i> del progetto &#232; <A HREF="http://www.cmake.org/HTML/Index.html;">http://www.cmake.org/HTML/Index.html;</A> il pacchetto da
+</I>&gt;&gt;<i> scaricare lo si pu&#242; trovare nella sezione Download del sito
+</I>&gt;&gt;<i> (scegliere la versione &#8220;Darwin Universal - Tiger only installer&#8220;).
+</I>&gt;&gt;<i> Una volta scaricato il pacchetto, scompattarlo ed installarlo
+</I>&gt;&gt;<i> attraverso l&#8217;apposita utility;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     3. dal terminale, accedere alla cartella dove &#232; stato scompattato
+</I>&gt;&gt;<i> il NNFW e lanciare il comando: &#8220;ccmake .&#8221; (senza virgolette) per
+</I>&gt;&gt;<i> avviare l&#8217;interfaccia semi-grafica di CMake;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     4. all&#8217;interno di questa interfaccia di CMake, premere il tasto
+</I>&gt;&gt;<i> &#8220;c&#8221; per accedere ai parametri di configurazione pre-compilazione
+</I>&gt;&gt;<i> (quelli di default dovrebbero comunque andare bene) e quindi il tasto
+</I>&gt;&gt;<i> &#8220;g&#8221; per generare il Makefile e tornare al terminale;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     5. lanciare il comando: &#8220;make&#8221; per compilare la libreria. Verr&#224;
+</I>&gt;&gt;<i> creato un file denominato &#8220;libnnfw.a&#8220;;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     6. lanciare il comando: &#8220;make install&#8221; per &#8220;installare&#8221; la
+</I>&gt;&gt;<i> libreria. Il file .a verr&#224; copiato dentro alla directory &#8220;/usr/local/
+</I>&gt;&gt;<i> lib&#8220;, mentre i vari headers saranno copiati in &#8220;/usr/local/include/
+</I>&gt;&gt;<i> nnfw&#8220;;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     7. a questo punto la libreria &#232; installata. Per utilizzarla da
+</I>&gt;&gt;<i> XCode, creare innanzitutto un nuovo progetto di tipo &#8220;C++ standard
+</I>&gt;&gt;<i> tool&#8220;. All&#8217;interno dell&#8217;area &#8220;Groups &amp; Files&#8221; (presente, di default,
+</I>&gt;&gt;<i> nella parte sinistra della vista &#8220;Workspace&#8221; di XCode), individuare
+</I>&gt;&gt;<i> il contenitore &#8220;Source&#8221; e trascinarvi al suo interno, selezionandolo
+</I>&gt;&gt;<i> dal Finder di Mac OS X, il file libnnfw.a generato in precedenza.
+</I>&gt;&gt;<i> Come riferimento &#232; possibile utilizzare lo screenshot eseguito sul
+</I>&gt;&gt;<i> mio iBook, presente qui sotto (cliccando sull&#8217;immagine &#232; possibile
+</I>&gt;&gt;<i> ingrandirla);
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     8. la libreria &#232; stata inclusa nel progetto. Rimane soltanto da
+</I>&gt;&gt;<i> indicare ad XCode dove trovare i relativi headers. Per farlo, clic
+</I>&gt;&gt;<i> con il pulsante destro (e con questa frase i maccisti puri mi
+</I>&gt;&gt;<i> banneranno a vita&#8230;) sul target del progetto, selezionare &#8220;Get Info&#8221;
+</I>&gt;&gt;<i> e, nella scheda &#8220;Build&#8220;, compilare il campo &#8220;User Header Search Path&#8221;
+</I>&gt;&gt;<i> con &#8220;/usr/local/include/nnfw&#8221; (senza virgolette);
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tutto qua! Il NNFW &#232; ora pienamente utilizzabile da XCode.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ciao,
+</I>&gt;&gt;<i> Fabio
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Nnfw-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000036.html">[Nnfw-users] Utilizzo del NNFW sotto Mac OS X 10.4 (Tiger)
+</A></li>
+	<LI>Next message: <A HREF="000038.html">[Nnfw-users] Utilizzo del NNFW sotto Mac OS X 10.4 (Tiger)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

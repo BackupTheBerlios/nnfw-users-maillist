@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Thinking about Learning Paradigms...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Thinking%20about%20Learning%20Paradigms...&In-Reply-To=%3C45755064.8050508%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000065.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Thinking about Learning Paradigms...</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Thinking%20about%20Learning%20Paradigms...&In-Reply-To=%3C45755064.8050508%40yahoo.it%3E"
+       TITLE="[Nnfw-users] Thinking about Learning Paradigms...">emmegian at yahoo.it
+       </A><BR>
+    <I>Tue Dec  5 11:56:36 CET 2006</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000065.html">[Nnfw-users] Thinking about Learning Paradigms...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+I reviewed the code developed so far for learning neural network and:
+The first attempt was too much closer to backpropagation needs and not
+very flexible from OOP point of view;
+The second attempt, maybe, is too much abstract. Because the learning
+rules, at the end, are simply function that returns the amount of
+parameter modification; but I think that is not so useful to implement
+the learning rule starting from this point of view... because this lead
+to think that all rules can have the same structure of the 'classic'
+Hebb rule (see the todo of Marco). Yes, it's true, but maybe not useful
+for the NNFW point of view.
+So, I think to categorize the rules depending on the meaning (and the
+role) of rule's parameters... for example:
+the Hebb rule is: &#916;&#969; = &#951;xy where x is the pre-sinaptic activity and y is
+the post-sinaptic activity... and the so-called delta-rule is: &#916;&#969; = &#951;ex
+where x is the input of neuron y and e is the error (d-y) of y neuron.
+These two rules are the same functional structure, but the variable has
+different meanings, and also the second one require a third 'external'
+variabile, the desired output y.
+After that, I propose the following classes:
+
+- one class: AbstractRule with the only method apply();
+I assume that the changing parameters can be vector or matrix, and this
+class manages both, so the subclasses doesn't have to be splitted in two
+hierarchies
+- at least four subclasses (abstract again): ErrorCorrectionRule,
+HebbianRule, SimulatedAnnealingRule, CreditAssignmentRule
+each of these rules impose to give inputs accordingly with the
+'semantic' of the rule, for example:
+The ErrorCorrectionRule require to set also a desired input
+The HebbianRule, instead, require only the pre-synaptic and
+post-synpatic activity
+and SimulatedAnnealingRule requires stocastic functions in order to
+select and change the parameters,
+and so on.
+
+This is a slighty modification of the new learning classes, but I think
+that stress more on the 'semantic' of rule's inputs/parameters.
+
+These classes will be used at run-time inside LearningBlocks, a parallel
+hierarchy of Cluster &amp; Linker. For istance, the class BiasedCluster has
+a parallel (or adaptor, or learner) class, BiasedClusterLearner that
+binds the free-parameters (i.e. the biases vector) with rule inputs
+(i.e. the HebbianRule).
+This is not easy to do due to high-variability of rule's interfaces...
+so, I'm looking for a way to expose the rule interface through Learners
+hierarchy, but at the moment the only ways seems via template
+parametrization.
+I would like to avoid the template parametrization, but ... :-(
+
+And at the end the ultimate step, construct big classes that implements
+a whole learning procedure, i.e.: backpropagation for feed-forward nets,
+using the classes described above. (Maybe, after released the 1.0 version)
+
+What do you think about ??
+I've written in english, because an another guy joined to this mailing
+list... and his contribution might be very useful because he use
+learning techniques.
+So, please give feedback in english.
+
+Thanks,
+Gianluca
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000065.html">[Nnfw-users] Thinking about Learning Paradigms...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

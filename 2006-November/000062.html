@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] NNFW e QT
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20NNFW%20e%20QT&In-Reply-To=%3C4561DDA9.8030505%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000061.html">
+   <LINK REL="Next"  HREF="000063.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] NNFW e QT</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20NNFW%20e%20QT&In-Reply-To=%3C4561DDA9.8030505%40yahoo.it%3E"
+       TITLE="[Nnfw-users] NNFW e QT">emmegian at yahoo.it
+       </A><BR>
+    <I>Mon Nov 20 17:54:01 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000061.html">[Nnfw-users] NNFW e QT
+</A></li>
+        <LI>Next message: <A HREF="000063.html">[Nnfw-users] NNFW 0.6.7 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao Marco,
+
+Capisco le tue perplessit&#224;... e sebbene su molti punti non sono
+d'accordo con te... anche io vorrei avere una libreria il meno possibile
+dipendente da altre librerie.
+Ma il mio problema, non &#232; sul fatto  che la libreria esterna sia piccola
+o grande ... a me piacerebbe che non dipendesse da nessuna.
+Fino ad adesso lo sforzo da parte mia per ottenere una cosa del genere &#232;
+stato enorme, molte volte ho pensato:
+&quot;Ma chi se ne frega se qualcuno vuole usare le mie librerie si scarica
+l'altra libreria, dov'&#232; il problema??&quot;
+Ma, cmq, sono andato avanti.
+Poi, sono arrivato al punto di usare XML... ci sono tante librerie,
+piccole e grandi, dedicate alla scrittura di file XML.
+Ne ho provate alcune, ed &#232; stato un fallimento; una dopo l'altra le
+librerie non andavano mai bene!!!
+Ma non posso... &#232; oltre ogni mio possibile sforzo... implementare un
+parser per file XML; quindi, devo obbligatoriamente usare una libreria
+esterna.
+Quindi, all'inizio ho pensato come te: &quot;Meglio una piccolina ed
+indipendente... che una grande come le QT&quot;... ma sfortunatamente dopo
+mesi di sforzi non sono riuscito a cavarne un ragno dal buco !! :-( :-(
+Quindi mi sono detto: &quot;Proviamo a vedere l'XML delle QT&quot; ... et-voil&#224;...
+in una settimana ho implementato tutto!!!
+La differenza nella velocit&#224; di programmazione con le QT &#232; micidiale!!
+Quindi, sebbene io cerco di venirvi incontro evitando le QT... alla fine
+le QT sono le uniche che offrono un framework di sviluppo facile
+efficiente e sopratutto completo !!
+In ogni caso, se pensi a lungo termine... &#232; il danno minore, visto che
+prima o poi le QT sarebbero entrate in ballo per la realizzazione
+dell'interfaccia grafica per la gestione di NNFW.
+
+In definitiva... non &#232; nelle mie possibilit&#224; mantenere l'indipendenza
+completa... quello che posso fare e mantenere l'indipendenza a livello
+dell'interfaccia.
+Attualmente questa &#232; la mia nuova prerogativa... perch&#233; purtroppo non ho
+le possibilit&#224; di sviluppare tutto da solo... e sopratutto non mi va
+ogni volta di re-inventare la ruota.
+
+Capisco che questa decisione pu&#242; essere dura... ma ti consiglio
+vivamente di iniziare a guardare le QT... dato che come pi&#249; volte ti ho
+ripetuto sono un toolkit per migliorare il tuo modo di sviluppare codice :-)
+
+Ciao,
+Gianluca
+
+Marco Mirolli ha scritto:
+&gt;<i> Caro Gianluca,
+</I>&gt;<i> so che questa mail non ti piacer&#224;, ma la devo scrivere.
+</I>&gt;<i>
+</I>&gt;<i> E' veramente necassario far dipendere il nostro NNFW dalle qt?
+</I>&gt;<i> Immagino che questa svolta sia dovuta al fatto che tu usi e conosci bene
+</I>&gt;<i> le QT, che comprendono anche una buona gestione di XML. Ma non si pu&#242;
+</I>&gt;<i> fare altrimenti (usare qualche altra libreria, meno impegnativa)?
+</I>&gt;<i>
+</I>&gt;<i> Il problema &#232; l'usabilit&#224;. Io, ad esempio, da quando &#232; uscita la
+</I>&gt;<i> versione 0.6 che dipende da QT4 non mi sono pi&#249; aggiornato perch&#233; le QT4
+</I>&gt;<i> non ce l'ho. Ovviamente questo &#232; dipeso anche dal fatto che non ho avuto
+</I>&gt;<i> tempo di programmare e dedicare tempo al NNFW, ma rimane il problema 
+</I>&gt;<i> generale: far dipendere la nostra (piccola) libreria di reti neurali da 
+</I>&gt;<i> una (enorme) libreria mi sembra pericoloso. Fra l'altro, le QT non solo 
+</I>&gt;<i> sono enormi, ma sono anche semi-proprietarie: fino alla versione 3 su 
+</I>&gt;<i> Windows erano solo a pagamento, adesso c'&#232; una versione free, ma che non 
+</I>&gt;<i> supporta l'integrazione con Visual Studio; e la 5 come sar&#224;? Chiss&#224;...
+</I>&gt;<i>
+</I>&gt;<i> Insomma: questa scelta ha gi&#224; impedito a me (che, al momento, sono uno 
+</I>&gt;<i> dei due sviluppatori) di aggiornarmi all'ultima versione del NNFW. Mi 
+</I>&gt;<i> immagino quanto possa disincentivare chiunque si voglia accostare al NNFW.
+</I>&gt;<i>
+</I>&gt;<i> Io, se possibile, cercherei di mantenere indipendenza completa del NNFW 
+</I>&gt;<i> da qualsiasi libreria (soprattutto se grande e proprietaria). E 
+</I>&gt;<i> introdurrei le QT solo quando implementeremo l'interfaccia grafica, che 
+</I>&gt;<i> dovrebbe comunque possibilmente rimanere indipendente dal cuore della 
+</I>&gt;<i> libreria!
+</I>&gt;<i>
+</I>&gt;<i> Ciao,
+</I>&gt;<i> Marco
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000061.html">[Nnfw-users] NNFW e QT
+</A></li>
+	<LI>Next message: <A HREF="000063.html">[Nnfw-users] NNFW 0.6.7 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#62">[ date ]</a>
+              <a href="thread.html#62">[ thread ]</a>
+              <a href="subject.html#62">[ subject ]</a>
+              <a href="author.html#62">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

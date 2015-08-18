@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Release 0.9.3 problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Release%200.9.3%20problem&In-Reply-To=%3Cd15985f10710231441h3c7f2bdcg6f1d99feeeff342c%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000075.html">
+   <LINK REL="Next"  HREF="000077.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Release 0.9.3 problem</H1>
+    <B>Fabio Ruini</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Release%200.9.3%20problem&In-Reply-To=%3Cd15985f10710231441h3c7f2bdcg6f1d99feeeff342c%40mail.gmail.com%3E"
+       TITLE="[Nnfw-users] Release 0.9.3 problem">fabio.ruini at gmail.com
+       </A><BR>
+    <I>Tue Oct 23 23:41:33 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000075.html">[Nnfw-users] Release 0.9.3 problem
+</A></li>
+        <LI>Next message: <A HREF="000077.html">[Nnfw-users] Release 0.9.3 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Eduardo,
+
+    in fact, I've forgot to specify that you've to include the dotlinker's
+class definition as well... :-)
+
+#include &quot;dotlinker.h&quot;
+
+Cheers,
+
+-- 
+Fabio Ruini
+
+Adaptive Behaviour &amp; Cognition Research Group
+Centre for Interactive Intelligent Systems
+School of Computing, Communications and Electronics
+
+B110, Portland Square
+University of Plymouth
+Plymouth PL4 8AA - United Kingdom
+
+E-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">fabio.ruini at plymouth.ac.uk</A>
+Web: <A HREF="http://www.fabioruini.eu">http://www.fabioruini.eu</A>
+Skype: fabio.ruini
+Phone: +44 (0)1752 232548
+Mobile: +44 (0)7948 308124
+
+
+2007/10/23, Eduardo Coutinho &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">eduardo.coutinho at plymouth.ac.uk</A>&gt;:
+&gt;<i>
+</I>&gt;<i> Hi Fabio
+</I>&gt;<i>
+</I>&gt;<i> I tried that before but it gives another error, as if DotLinker didn't
+</I>&gt;<i> exit
+</I>&gt;<i> as a class.
+</I>&gt;<i>
+</I>&gt;<i> DotLinker* input2hidden;
+</I>&gt;<i>         DotLinker* context2hidden;
+</I>&gt;<i>         DotLinker* hidden2output;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> input2hidden   = new DotLinker( inputLayer, hiddenLayer );
+</I>&gt;<i>     context2hidden = new DotLinker( contextLayer,hiddenLayer);
+</I>&gt;<i>     hidden2output  = new DotLinker( hiddenLayer, outputLayer );
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Cheers,
+</I>&gt;<i> E.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 23/10/07 17:14, &quot;Fabio Ruini&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">fabio.ruini at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; nnfw::DotLinker
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/nnfw-users/attachments/20071023/4dc2caee/attachment.html">https://lists.berlios.de/pipermail/nnfw-users/attachments/20071023/4dc2caee/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000075.html">[Nnfw-users] Release 0.9.3 problem
+</A></li>
+	<LI>Next message: <A HREF="000077.html">[Nnfw-users] Release 0.9.3 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#76">[ date ]</a>
+              <a href="thread.html#76">[ thread ]</a>
+              <a href="subject.html#76">[ subject ]</a>
+              <a href="author.html#76">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

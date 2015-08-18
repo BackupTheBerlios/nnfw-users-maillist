@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Check sulla struttura di una NN feedforward
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Check%20sulla%20struttura%20di%20una%20NN%20feedforward&In-Reply-To=%3C0B6BE227-1D11-4B2D-8278-712F562BF0AB%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000045.html">
+   <LINK REL="Next"  HREF="000047.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Check sulla struttura di una NN feedforward</H1>
+    <B>Fabio Ruini</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Check%20sulla%20struttura%20di%20una%20NN%20feedforward&In-Reply-To=%3C0B6BE227-1D11-4B2D-8278-712F562BF0AB%40gmail.com%3E"
+       TITLE="[Nnfw-users] Check sulla struttura di una NN feedforward">fabio.ruini at gmail.com
+       </A><BR>
+    <I>Sun Oct 29 14:24:32 CET 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000045.html">[Nnfw-users] NEWS: 0.6.1 is out
+</A></li>
+        <LI>Next message: <A HREF="000047.html">[Nnfw-users] Check sulla struttura di una NN feedforward
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti...
+
+sperando di non essere troppo pesante, vorrei chiedervi un consiglio  
+relativamente all'utilizzo del NNFW per le simulazioni su cui sto  
+lavorando.
+
+La rete che ho creato &#232; di tipo feedforward, con tre clusters di  
+neuroni di input continui (due clusters da 2 neuroni ciascuno ed un  
+cluster con un neurone unico), un cluster di HL (composto da 9  
+neuroni continui) ed un cluster di 2 neuroni booleani di output.
+
+Il codice che ho scritto per implementare questa topologia di rete  
+l'ho ricopiato qui sotto. Premetto che sono ancora in piena fase di  
+esperimenti. L'unica perplessit&#224; che ho al momento, riguarda il  
+richiamo alla funzione net-&gt;step(). Quello di cui mi sono accorto,  
+per ora, &#232; che se stampo l'output dei due neuroni booleani della rete  
+(std::cout &lt;&lt; &quot;Output dopo lo step: &quot; &lt;&lt; output-&gt;getOutput(0) &lt;&lt;  
+output-&gt;getOutput(1) &lt;&lt; &quot;\n&quot;;) dopo aver effettuato lo &quot;step&quot;, i  
+valori non variano rispetto a quelli che la rete mi restituisce prima  
+del net-&gt;step().
+
+Questo accade perch&#232; l'output viene calcolato non appena settati gli  
+input (e quindi il richiamo a net-&gt;step() &#232; superfluo) o dite che c'&#232;  
+un qualche erroraccio nel mio codice?
+
+Ultimissima cosa. Per settare i neuroni di output come booleani io ho  
+impostato una funzione di attivazione a gradino, di questo tipo:
+
+output-&gt;setFunction(StepFunction(0.0, 1.0, 0.5)); // Output layer
+
+Dite che pu&#242; andare?
+
+
+Questo &#232; il riassunto del mio codice:
+
+// Including the various NNFW's header files
+#include &quot;nnfw.h&quot;
+#include &quot;random.h&quot;
+#include &quot;fakecluster.h&quot;
+#include &quot;biasedcluster.h&quot;
+#include &quot;matrixlinker.h&quot;
+#include &quot;realmat.h&quot;
+
+// Declaring the use of namespace &quot;nnfw&quot;
+using namespace nnfw;
+
+// Main
+int main() {
+
+	// Random number generator initialization
+	Random::setSeed(time(0));
+
+	// Input, hidden and output layer's definition
+	BiasedCluster *hidden, *output, *inF, *inW, *inM;
+	hidden = new BiasedCluster(9); // Hidden layer, formed by 9 neural  
+units
+	output = new BiasedCluster(2); // Output layer, formed by 2 neural  
+units
+	inF = new BiasedCluster(2); // Cluster #1 of the input layer (2  
+neurons)
+	inW = new BiasedCluster(2); // Cluster #2 of the input layer (2  
+neurons)
+	inM = new BiasedCluster(1); // Cluster #3 of the input layer (1  
+neurons)
+
+	// Activation functions' setting
+	inF-&gt;setFunction(IdentityFunction()); // Cluster #1 of the input layer
+	inW-&gt;setFunction(IdentityFunction()); // Cluster #2 of the input layer
+	inM-&gt;setFunction(IdentityFunction()); // Cluster #3 of the input layer
+	hidden-&gt;setFunction(SigmoidFunction()); // Hidden layer
+	output-&gt;setFunction(StepFunction(0.0, 1.0, 0.5)); // Output layer
+
+	// Synaptic connections' setting
+	MatrixLinker *fh, *wh, *mh, *ho;
+	fh = new MatrixLinker(inF,hidden); // Connections between the  
+cluster #1 and the HL
+	wh = new MatrixLinker(inW,hidden); // Connections between the  
+cluster #2 and the HL
+	mh = new MatrixLinker(inM,hidden); // Connections between the  
+cluster #3 and the HL
+	ho = new MatrixLinker(hidden,output); // Connections between the HL  
+and the OL
+
+	// NN's creation
+	BaseNeuralNet *net;
+	net = new BaseNeuralNet();
+
+	// Inserting the clusters
+	net-&gt;addCluster(inF, true);
+	net-&gt;addCluster(inW, true);
+	net-&gt;addCluster(inM, true);
+	net-&gt;addCluster(hidden);
+	net-&gt;addCluster(output, false, true);
+	
+	// Adding the linkers
+	net-&gt;addLinker(fh);
+	net-&gt;addLinker(wh);
+	net-&gt;addLinker(mh);
+	net-&gt;addLinker(ho);
+
+	// NN's sort
+	UpdatableVec updatables_order;
+	net-&gt;setOrder(updatables_order &lt;&lt; fh &lt;&lt; wh &lt;&lt; mh &lt;&lt; hidden &lt;&lt; ho &lt;&lt;  
+output);
+
+	// Randomization of the agent's connections weights
+	net-&gt;randomize(-1.0,1.0); // The weights' values moves beetwen -1.0  
+and +1.0
+
+	// Set inputs
+	inM-&gt;setInput(0,0.5); // Simulation #1: motivation fixed at 0.5 level
+	inF-&gt;setInput(0,-0.89);
+	inF-&gt;setInput(1,0.45);
+	inW-&gt;setInput(0,0.43);
+	inW-&gt;setInput(1,-0.233);
+
+	// Calculate the NN's output
+	net-&gt;step();
+
+}
+
+Un grazie di cuore, fin d'ora, a chi potr&#224; risolvere questi miei  
+dubbi...
+
+Ciao,
+Fabio
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000045.html">[Nnfw-users] NEWS: 0.6.1 is out
+</A></li>
+	<LI>Next message: <A HREF="000047.html">[Nnfw-users] Check sulla struttura di una NN feedforward
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

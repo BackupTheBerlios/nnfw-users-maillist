@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] nnfw: practicals
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20nnfw%3A%20practicals&In-Reply-To=%3C453F3B1A.9010208%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000029.html">
+   <LINK REL="Next"  HREF="000030.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] nnfw: practicals</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20nnfw%3A%20practicals&In-Reply-To=%3C453F3B1A.9010208%40yahoo.it%3E"
+       TITLE="[Nnfw-users] nnfw: practicals">emmegian at yahoo.it
+       </A><BR>
+    <I>Wed Oct 25 12:23:22 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000029.html">[Nnfw-users] nnfw: practicals
+</A></li>
+        <LI>Next message: <A HREF="000030.html">[Nnfw-users] nnfw: practicals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok... quando torni dall'oltretomba... fammi un fischio :-D
+
+Fabio Ruini ha scritto:
+&gt;<i> Veloce update... sono un coglione... su VC++ funziona tutto...
+</I>&gt;<i> mi ero dimenticato di includere i sorgenti all'interno del progetto...
+</I>&gt;<i>
+</I>&gt;<i> vado a sotterrarmi... ci si vede tra un po'... :-/
+</I>&gt;<i>
+</I>&gt;<i> Ciao,
+</I>&gt;<i> Fabio
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 25/ott/06, alle ore 11:31, Fabio Ruini ha scritto:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Perfetto... allora appena avr&#242; finito di mettere in moto tutto
+</I>&gt;&gt;<i> l'ambaradan inizier&#242; a scrivere a riguardo... :-)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> A proposito... con il &quot;metodo dell'include&quot;, ossia senza compilare la
+</I>&gt;&gt;<i> libreria ma includendo i singoli files all'interno del programma,
+</I>&gt;&gt;<i> purtroppo non riesco ancora a far partir niente. E' da ieri che
+</I>&gt;&gt;<i> faccio tentativi sia sul mac (con GCC 4), sia su Windows (con Visual C
+</I>&gt;&gt;<i> ++), ma quello che ottengo durante la fase di compilazione sono
+</I>&gt;&gt;<i> sempre errori relativi al linker.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ad esempio, un codice pur stupido come questo:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> #include &lt;iostream&gt;
+</I>&gt;&gt;<i> #include &quot;random.h&quot;
+</I>&gt;&gt;<i> // #include un_po'_di_altri_files_punto_h
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> using namespace nnfw;
+</I>&gt;&gt;<i> using namespace std;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> int main () {
+</I>&gt;&gt;<i> 	Random::setSeed(0);
+</I>&gt;&gt;<i> 	return(0);
+</I>&gt;&gt;<i> }
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> con g++ mi restituisce, a parte alcuni warning, un errore del tipo:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> /usr/bin/ld: Undefined symbols:
+</I>&gt;&gt;<i> nnfw::Random::setSeed(long)
+</I>&gt;&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> VC++, invece, mi dice pi&#249; o meno:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> main.obj : error LNK2019: riferimento al simbolo esterno &quot;public:
+</I>&gt;&gt;<i> static void__ccdec1 nnfw::Random::setSeed(long)&quot; (?
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">setSeed at Random</A>@nnfw@@<A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">SAXJ at Z</A>) non risolto nella funzione _main
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Probabilmente &#232; uno di quei problemi idioti che si risolvono in due
+</I>&gt;&gt;<i> secondi, ma sto googlando da ieri senza trovare una soluzione...
+</I>&gt;&gt;<i> magari ti ci sei gi&#224; imbattuto in qualcosa di simile? :-/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Cmq sia, stamattina mi sono procurato CMake. Su Mac (Os X 10.4), sono
+</I>&gt;&gt;<i> riuscito a compilare la libreria al primo colpo, come da copione. Su
+</I>&gt;&gt;<i> Windows ho riscontrato qualche errore, ma mi sembra che siano dovuti
+</I>&gt;&gt;<i> alla configurazione di Cmake sulla mia macchina.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Provo a fare qualche esperimento... :-)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> A presto,
+</I>&gt;&gt;<i> Fabio
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il giorno 25/ott/06, alle ore 10:55, Gianluca ha scritto:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Ciao Fabio,
+</I>&gt;&gt;&gt;<i> ben venga la tua esperienza... perch&#233; ogni problema che incontrerai
+</I>&gt;&gt;&gt;<i> e un
+</I>&gt;&gt;&gt;<i> piccolo passo in avanti per lo sviluppo della libreria !! :-)
+</I>&gt;&gt;&gt;<i> Anche il tuo aiuto &#232; ben accolto... ma dovresti commentare tutto in
+</I>&gt;&gt;&gt;<i> inglese.
+</I>&gt;&gt;&gt;<i> Cmq, non ti preoccupare... il mio progetto &#232; nato OpenSource Free
+</I>&gt;&gt;&gt;<i> (GPL)
+</I>&gt;&gt;&gt;<i> ... quindi ci&#242; vuol dire che puoi usarlo a scrocco quanto vuoi... nei
+</I>&gt;&gt;&gt;<i> limiti della licenza GPL ;-)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Ciao,
+</I>&gt;&gt;&gt;<i> Gianluca
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Nnfw-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000029.html">[Nnfw-users] nnfw: practicals
+</A></li>
+	<LI>Next message: <A HREF="000030.html">[Nnfw-users] nnfw: practicals
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

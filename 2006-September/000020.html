@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] MSE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20MSE&In-Reply-To=%3C45118CA9.30000%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000019.html">
+   <LINK REL="Next"  HREF="000021.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] MSE</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20MSE&In-Reply-To=%3C45118CA9.30000%40yahoo.it%3E"
+       TITLE="[Nnfw-users] MSE">emmegian at yahoo.it
+       </A><BR>
+    <I>Wed Sep 20 20:47:05 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000019.html">[Nnfw-users] MSE
+</A></li>
+        <LI>Next message: <A HREF="000021.html">[Nnfw-users] NEWS: 0.5.0 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao Eduardo,
+the MSE method is static !!!
+So, you don't have to create a RealVec to use it... but only the scope
+resolution operator:
+result = RealVec::mse( vector1, vector2 )
+
+Ciao,
+Gianluca
+
+EC ha scritto:
+&gt;<i> Hi Gianluca
+</I>&gt;<i>
+</I>&gt;<i> The calculation of the MSE is attached to RealVec. Can you add a new
+</I>&gt;<i> procedure to calculate it independently of it. Otherwise we need to create a
+</I>&gt;<i> fictitious  RealVec to calculate it. Can you add RMS as well?
+</I>&gt;<i> By the way: is it better to use RMS or MSE to analyze the output errors of
+</I>&gt;<i> an Elman NN? What do you say Marco? In training the NNFW uses MSE ... In
+</I>&gt;<i> analysis I am using RMS.
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Eduardo.
+</I>&gt;<i>
+</I>&gt;<i> 00138 Real RealVec::mse( const RealVec&amp; target, const RealVec&amp; actual ) {
+</I>&gt;<i> 00139 #ifdef NNFW_DEBUG
+</I>&gt;<i> 00140     if ( target.size() != actual.size() ) {
+</I>&gt;<i> 00141         nnfwMessage( NNFW_ERROR, &quot;Error in mse: target and actual
+</I>&gt;<i> vectors have different size&quot; );
+</I>&gt;<i> 00142         return 0.0;
+</I>&gt;<i> 00143     }
+</I>&gt;<i> 00144 #endif
+</I>&gt;<i> 00145     RealVec error( target.size() );
+</I>&gt;<i> 00146     error.assign(target);
+</I>&gt;<i> 00147     error -= actual;
+</I>&gt;<i> 00148     error.square();
+</I>&gt;<i> 00149     return error.mean();
+</I>&gt;<i> 00150 };
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000019.html">[Nnfw-users] MSE
+</A></li>
+	<LI>Next message: <A HREF="000021.html">[Nnfw-users] NEWS: 0.5.0 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

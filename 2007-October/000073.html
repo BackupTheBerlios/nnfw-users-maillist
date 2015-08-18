@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users]  Release 0.9.3 problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20%20Release%200.9.3%20problem&In-Reply-To=%3CC343D7AA.23F0%25eduardo.coutinho%40plymouth.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000074.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users]  Release 0.9.3 problem</H1>
+    <B>Eduardo Coutinho</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20%20Release%200.9.3%20problem&In-Reply-To=%3CC343D7AA.23F0%25eduardo.coutinho%40plymouth.ac.uk%3E"
+       TITLE="[Nnfw-users]  Release 0.9.3 problem">eduardo.coutinho at plymouth.ac.uk
+       </A><BR>
+    <I>Tue Oct 23 22:54:02 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000074.html">[Nnfw-users] Release 0.9.3 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all
+
+I have just compiled the 0.9.3 version. I was still using the 0.7.0 ...
+I am compiling something that was working with the 0.7.0 version and I get 2
+sources of errors:
+
+- GetCritPtr(num)-&gt;contextLayer-&gt;size() gives an error. Comparing the two
+version of the manuals I found that the SimpleCluster class has been changed
+and I changed to GetCritPtr(num)-&gt;contextLayer-&gt;numNeurons(). Seems to work
+... Is this correct?
+
+-     input2hidden   = new MatrixLinker( inputLayer, hiddenLayer ); This is
+the other. Somehow it does not allow me to create this pointer to an object
+MatrixLinker. The error message says that is because virtual void
+nnfw::Updatable:::update() is pure within nnfw::MatrixLinker. Checking both
+versions manuals I also found that this class has been changed. The
+MatrixLinker class does not have an implementation of update() anymore ...
+It seems that it is the difference. And there's something new called
+NormLinker? Guess I'm outdated ...
+
+Can someone help?
+
+Cheers,
+Eduardo.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000074.html">[Nnfw-users] Release 0.9.3 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] SetMomentum
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20SetMomentum&In-Reply-To=%3CC344E0A9.2403%25eduardo.coutinho%40plymouth.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000081.html">
+   <LINK REL="Next"  HREF="000083.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] SetMomentum</H1>
+    <B>Eduardo Coutinho</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20SetMomentum&In-Reply-To=%3CC344E0A9.2403%25eduardo.coutinho%40plymouth.ac.uk%3E"
+       TITLE="[Nnfw-users] SetMomentum">eduardo.coutinho at plymouth.ac.uk
+       </A><BR>
+    <I>Wed Oct 24 17:44:41 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000081.html">[Nnfw-users] SetMomentum
+</A></li>
+        <LI>Next message: <A HREF="000083.html">[Nnfw-users] SetMomentum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#82">[ date ]</a>
+              <a href="thread.html#82">[ thread ]</a>
+              <a href="subject.html#82">[ subject ]</a>
+              <a href="author.html#82">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Gianluca
+
+I've been changing the class strucutre so maybe I did something wrong.
+The error I have I the command line is:
+
+Source/ElmanNetwork.cpp:75: error: no 'void
+CElmanNetwork::SetMomentumAllNet(float)' member function declared in class
+'CElmanNetwork'
+Source/ElmanNetwork.cpp:87: error: no 'void
+CElmanNetwork::SetLearnRateAllNet(float)' member function declared in class
+'CElmanNetwork'
+Source/ElmanNetwork.cpp:98: error: no 'float CElmanNetwork::CalcFitR2(int,
+nnfw::RealVec, nnfw::RealVec)' member function declared in class
+'CElmanNetwork'
+Source/ElmanNetwork.cpp:120: error: no 'void CElmanNetwork::Learn(int, int,
+int, int, MatrixFloat*, MatrixFloat*, MatrixFloat*, MatrixFloat*,
+MatrixFloat*, MatrixFloat*)' member function declared in class
+'CElmanNetwork'
+Source/ElmanNetwork.cpp: In member function 'void CElmanNetwork::Learn(int,
+int, int, int, MatrixFloat*, MatrixFloat*, MatrixFloat*, MatrixFloat*,
+MatrixFloat*, MatrixFloat*)':
+
+In fact the class CElmanNetwork contains all the object need to create the
+network and also the functions (everything is public) that the compiler says
+that aren't there. They have the prototype in ElmanNetwork.h and the
+declaration in ElmanNetwork.cpp (the files that says that there are no such
+functions in the CElmanNetwork scope)
+
+In Xcode compiles that stop whenever any of this functions need to be
+executed. To be honest if I comment them out it foes further but gets stuck
+again when trying to access a BiasedCluster from its own class. It seems
+that the error is in accessing this elements (to set the learn rate, etc.,
+one needs to access the gradient clusters, and I guess it crashes here.)
+
+This is the class .h file:
+
+#if !defined(__elmannetwork_h)              // Sentry, use file only if it's
+not already included.
+#define __elmannetwork_h
+
+/*  
+   Class definition for an Elman Network implementation with the NNfw
+(CModel).
+*/
+
+#include &quot;global.h&quot;
+
+class CElmanNetwork
+{
+         
+ public:
+        CElmanNetwork () ;
+        ~CElmanNetwork ();
+ // --- Defining the Layers of newtork
+        BiasedCluster* inputLayer;
+        SimpleCluster* contextLayer;
+        BiasedCluster* hiddenLayer;
+        BiasedCluster* outputLayer;
+// --- Defining how layers are connected
+        DotLinker* input2hidden;
+        DotLinker* context2hidden;
+        DotLinker* hidden2output;
+        CopyLinker* hidden2context;
+// --- Putting all together... and play
+        BaseNeuralNet* nn;
+// --- specify how the layer and matrix weight will be updated
+        UpdatableVec ord;
+// --- Defining the Layers of newtork
+        GradientBiasedCluster* inputLayerG;
+        GradientBiasedCluster* hiddenLayerG;
+        GradientBiasedCluster* outputLayerG;
+// --- Defining how layers are connected
+        GradientMatrixLinker* input2hiddenG;
+        GradientMatrixLinker* context2hiddenG;
+        GradientMatrixLinker* hidden2outputG;
+        CopyLinker* hidden2contextG;
+        LearningNetwork* learnNet;
+// --- specify how the layer and matrix weight will be updated
+        TeachBlockVec ordG;
+          
+        void SetMomentumAllNet (float momIn);
+        void SetLearnRateAllNet (float lrIn);
+        
+        void Learn(int numIterations, int lengthTrainSet, int numInputs, int
+numOutputs, MatrixFloat* inputTrainSetPtr, MatrixFloat*targetTrainSetPtr,
+MatrixFloat* resetTrainSetPtr, MatrixFloat* inputTestSetPtr, MatrixFloat*
+targetTestSetPtr, MatrixFloat* resetTestSetPtr);
+    
+        float CalcFitR2 (int size, RealVec vecTargetsIn, RealVec
+vecOutputsIn);
+                
+protected:
+
+private:
+
+};
+
+#endif
+
+On 24/10/07 11:23, &quot;Gianluca&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">emmegian at yahoo.it</A>&gt; wrote:
+
+&gt;<i> Hello Eduardo,
+</I>&gt;<i> I've never changed the SetMomentum because I planned to change all
+</I>&gt;<i> learning structure.
+</I>&gt;<i> So, I really don't know where could be the problem.
+</I>&gt;<i> Post also the runtime error that you get.
+</I>&gt;<i> 
+</I>&gt;<i> Ciao,
+</I>&gt;<i> Gianluca
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Eduardo Coutinho ha scritto:
+</I>&gt;&gt;<i> Hi
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Did anything change as well with the SetMomentum method?
+</I>&gt;&gt;<i> I have a runtime error when calling the following function:
+</I>&gt;&gt;<i> void CElmanNetwork :: SetMomentumAllNet (float momIn)
+</I>&gt;&gt;<i>     {
+</I>&gt;&gt;<i>         std::cout &lt;&lt; &quot;SetMomentumAllNet&quot; &lt;&lt; std::endl
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>         inputLayerG-&gt;setMomentum(momIn);
+</I>&gt;&gt;<i>         outputLayerG-&gt;setMomentum(momIn);
+</I>&gt;&gt;<i>         hiddenLayerG-&gt;setMomentum(momIn);
+</I>&gt;&gt;<i>         input2hiddenG-&gt;setMomentum(momIn);
+</I>&gt;&gt;<i>         context2hiddenG-&gt;setMomentum(momIn);
+</I>&gt;&gt;<i>         hidden2outputG-&gt;setMomentum(momIn);
+</I>&gt;&gt;<i>     }
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> It blocks the application when executing inputLayerG-&gt;setMomentum(momIn).
+</I>&gt;&gt;<i> In fact it compiles within Xcode but not in the command line.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Can anybody help?
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Cheers,
+</I>&gt;&gt;<i> E. 
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Nnfw-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>   
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000081.html">[Nnfw-users] SetMomentum
+</A></li>
+	<LI>Next message: <A HREF="000083.html">[Nnfw-users] SetMomentum
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#82">[ date ]</a>
+              <a href="thread.html#82">[ thread ]</a>
+              <a href="subject.html#82">[ subject ]</a>
+              <a href="author.html#82">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

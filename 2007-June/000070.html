@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Release 0.9.0 is out
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Release%200.9.0%20is%20out&In-Reply-To=%3C46655FF3.2000709%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Release 0.9.0 is out</H1>
+    <B>Gianluca</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Release%200.9.0%20is%20out&In-Reply-To=%3C46655FF3.2000709%40yahoo.it%3E"
+       TITLE="[Nnfw-users] Release 0.9.0 is out">emmegian at yahoo.it
+       </A><BR>
+    <I>Tue Jun  5 15:06:59 CEST 2007</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>  * Summary of important changes
+    - added an experimental class nnfwString for future Unicode support
+    - new version of XML format; small changes for end-users but more
+improvements for
+        people that create new kind of Cluster/Linker for a tighty
+integration with NNFW
+    - added a generic data pointer (void*) to Variant and two template
+method for accessing it
+    - add the method Propertized::convertStringTo for converting the
+string-type
+        Variant readed from XML into the type required by class
+    - nnfwMessage replace by a new object-oriented messaging system:
+nWarning, nError, nFatal
+    - NNFW_DEBUG flags is also activated with CMake ReleaseWithDebugInfo
+build-type
+    - renamed RealVec::mul to RealVec::outprod, and bugfixed
+    - renamed Updatable::getName() to name()
+    - renamed Cluster::size() to numNeurons()
+    - Variant methods getRealVec and getRealMat now returns non-const
+pointers
+    - MatrixLinker is now Abstract; use DotLinker
+
+  * Bugfixs:
+    - now nnfw-config report correctly the MKL include directory
+    - added more exit-points in xml processing to avoid data corruption when
+        mandatory tags are not present
+    - no more segmentation fault when it's omitted the attribute 'i' in
+the xml
+        file for vector properties
+    - no more segmentation fault when processed a non-existing property
+in xml files
+    - bugfix error in exporting template classes in Windows; added
+NNFW_TEMPLATE macro for
+        handling the exportation of template classes
+    - fixed clone method of GaussFunction
+    - fixed outer-product calculation
+    - adjusted Doxygen documentation; now all methods are displayed
+corretcly
+
+enjoy yourself,
+Gianluca
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

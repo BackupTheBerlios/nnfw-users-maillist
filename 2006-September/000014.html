@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Consiglio su un cambio di nome...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Consiglio%20su%20un%20cambio%20di%20nome...&In-Reply-To=%3C200609191813.57645.francesco.mannella%40istc.cnr.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000013.html">
+   <LINK REL="Next"  HREF="000015.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Consiglio su un cambio di nome...</H1>
+    <B>francesco mannella</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Consiglio%20su%20un%20cambio%20di%20nome...&In-Reply-To=%3C200609191813.57645.francesco.mannella%40istc.cnr.it%3E"
+       TITLE="[Nnfw-users] Consiglio su un cambio di nome...">francesco.mannella at istc.cnr.it
+       </A><BR>
+    <I>Tue Sep 19 18:13:57 CEST 2006</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000013.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+        <LI>Next message: <A HREF="000015.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>D'accordo su OutputFunction. Per&#242; in questo caso la modifica della gerarchia 
+per i Linker, secondo me, dovrebbe andare in parallelo, senno' si perdono i 
+pezzi. 
+In alternativa, forse TransfertFunction &#232; pi&#249; intuitiva delle altre e in parte 
+mantiene la logica di cui parla Marco (in pratica la OutputFunction &#232; quella 
+che decide per la linearit&#224; dell'uscita, e questo di solito lo si dice della 
+funzione di trasferimento).
+
+Alle 17:29, marted&#236; 19 settembre 2006, Marco Mirolli ha scritto:
+&gt;<i> Anche a me ActivationFunction sembrava la soluzione migliore ma...
+</I>&gt;<i> guardate questo interessante articolo:
+</I>&gt;<i> W. Duch and N. Jankowski (1999) Survey of neural transfer functions.
+</I>&gt;<i> Neural Computing Surveys, (2):163--212
+</I>&gt;<i> <A HREF="http://citeseer.ist.psu.edu/duch99survey.html">http://citeseer.ist.psu.edu/duch99survey.html</A>
+</I>&gt;<i>
+</I>&gt;<i> L'articolo fa una tassonomia piuttosto esaustiva di funzioni per reti
+</I>&gt;<i> neurali usando i seguenti nomi:
+</I>&gt;<i>
+</I>&gt;<i> activation functions = funzioni che generano il netInput
+</I>&gt;<i>
+</I>&gt;<i> output functions = funzioni che, dato il netInput, generano
+</I>&gt;<i> l'attivazione del neurone
+</I>&gt;<i>
+</I>&gt;<i> transfer functions = combinazioni di activation functions e output
+</I>&gt;<i> functions
+</I>&gt;<i>
+</I>&gt;<i> Dunque, quelle che Duch e Jankowski chiamano activation functions nel
+</I>&gt;<i> NNFW equivalgono, grosso modo, alle implementazioni della funzione
+</I>&gt;<i> update() dei linker, mentre i nostro attuali ClusterUpdater loro li
+</I>&gt;<i> chiamano output functions.
+</I>&gt;<i> Visto che in effetti gli attuali ClusterUpdaters determinano l'output di
+</I>&gt;<i> un cluster (dato l'input), forse il nome OutputFunction (in conformit&#224;
+</I>&gt;<i> con l'articolo citato) &#232; il migliore.
+</I>&gt;<i>
+</I>&gt;<i> L'articolo citato suggerisce anche che in futuro si potrebbe creare una
+</I>&gt;<i> gerarchia per le funzioni che generano il netInput, usate dai Linker,
+</I>&gt;<i> analoga all'attuale gerarchia di ClusterUpdater per i Cluster.
+</I>&gt;<i>
+</I>&gt;<i> Meditate...
+</I>&gt;<i> e buon lavoro.
+</I>&gt;<i> Ciao,
+</I>&gt;<i> Marco
+</I>&gt;<i>
+</I>&gt;<i> Gianluca wrote:
+</I>&gt;<i> &gt; Ciao a tutti,
+</I>&gt;<i> &gt; attualmente la funzione di attivazione dei neuroni &#232; implementata
+</I>&gt;<i> &gt; attraverso una gerarchia di classe la cui radice &#232; *ClusterUpdater*
+</I>&gt;<i> &gt; Penso che il nome non &#232; molto adatto perch&#233; non aggiorna (Updater) il
+</I>&gt;<i> &gt; Cluster... ma &#232; semplicemente una funzione che si applica ad un vettore
+</I>&gt;<i> &gt; di reali, quindi ho pensato ad altri nomi... quale pensate sia il pi&#249;
+</I>&gt;<i> &gt; adatto fra questi ???
+</I>&gt;<i> &gt;  a) VectorialFunction
+</I>&gt;<i> &gt;  b) ActivationFunction
+</I>&gt;<i> &gt;  c) NFunction
+</I>&gt;<i> &gt;  d) VecFunction
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ciao,
+</I>&gt;<i> &gt; Gianluca
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Nnfw-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Nnfw-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">Nnfw-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">https://lists.berlios.de/mailman/listinfo/nnfw-users</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000013.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+	<LI>Next message: <A HREF="000015.html">[Nnfw-users] Consiglio su un cambio di nome...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>

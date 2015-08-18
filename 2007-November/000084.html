@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Nnfw-users] Passing values from a matrix of float values to a	RealMat
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/nnfw-users/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Passing%20values%20from%20a%20matrix%20of%20float%20values%20to%20a%0A%09RealMat&In-Reply-To=%3CB080E1A4-559D-4E3F-AD1C-8A721CB93FDE%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000085.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Nnfw-users] Passing values from a matrix of float values to a	RealMat</H1>
+    <B>Fabio Ruini</B> 
+    <A HREF="mailto:nnfw-users%40lists.berlios.de?Subject=Re%3A%20%5BNnfw-users%5D%20Passing%20values%20from%20a%20matrix%20of%20float%20values%20to%20a%0A%09RealMat&In-Reply-To=%3CB080E1A4-559D-4E3F-AD1C-8A721CB93FDE%40gmail.com%3E"
+       TITLE="[Nnfw-users] Passing values from a matrix of float values to a	RealMat">fabio.ruini at gmail.com
+       </A><BR>
+    <I>Mon Nov 12 19:05:45 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000085.html">[Nnfw-users] Passing values from a matrix of float values to a	RealMat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+
+I'm experiencing a strange behaviour by the RealMat class (NNFW  
+0.9.3) used in my software.
+
+In first instance, according to the following code, I create a RealMat:
+
+// RealMat declaration/creation
+nnfw::RealMat *stored_weights_TargetAngleToHidden;
+stored_weights_TargetAngleToHidden = new nnfw::RealMat(3,  
+hidden_neurons);
+
+Then I create a matrix (same size as the RealMat) of float values...
+
+// float matrix declaration
+float weightsTargetAngleToHidden[3][30]
+
+... that I use to store some values read from a text file:
+
+QString filename_TargetAngleToHidden = dataDirectory + &quot;/ 
+TargetAngleToHidden.txt&quot;;
+std::ifstream in_TargetAngleToHidden;
+in_TargetAngleToHidden.open(filename_TargetAngleToHidden.toLatin1());
+in_TargetAngleToHidden &gt;&gt; weightsTargetAngleToHidden[j][i];
+
+Right now, everything is ok. The values contained in the text file  
+have been correctly read and stored into the matrix (I'm sure of  
+this). The problem is that I get a run-time error when I try to copy  
+these values to the previously declared RealMat using the following  
+syntax:
+
+stored_weights_TargetAngleToHidden[j][i] = weightsTargetAngleToHidden 
+[j][i];
+
+What is driving me crazy is the fact that if I try something  
+different, like:
+
+float a = 2.2;
+stored_weights_TargetDistanceToHidden[j][i] = a;
+
+everything seem to work correctly!
+
+Anyone could please clarify me where I'm wrong? :-/
+
+Thanks in advance!
+
+-- 
+Fabio Ruini
+
+Adaptive Behaviour &amp; Cognition Research Group
+Centre for Interactive Intelligent Systems
+School of Computing, Communications and Electronics
+
+B110, Portland Square
+University of Plymouth
+Plymouth PL4 8AA - United Kingdom
+
+E-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/nnfw-users">fabio.ruini at plymouth.ac.uk</A>
+Web: <A HREF="http://www.fabioruini.eu">http://www.fabioruini.eu</A>
+Skype: fabio.ruini
+Phone: +44 (0)1752 232548
+Mobile: +44 (0)7948 308124
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000085.html">[Nnfw-users] Passing values from a matrix of float values to a	RealMat
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/nnfw-users">More information about the Nnfw-users
+mailing list</a><br>
+</body></html>
